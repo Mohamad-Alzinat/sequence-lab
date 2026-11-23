@@ -4,15 +4,6 @@ Sequence Lab finds every exact, overlapping occurrence of one or more patterns i
 
 [Project report (PDF)](docs/report.pdf) · [UML class diagram (PDF)](docs/class-diagram.pdf) · [Benchmark results](bench/results/validation-table.md)
 
-## Run locally
-
-Use **Node.js 22 or later**. The project runs with Node’s built-in modules and has no package dependencies.
-
-```sh
-node server.js
-```
-
-Open [the local workspace](http://127.0.0.1:4173), select **Sequence search**, and load **DNA motifs** for a first run. **Match results** shows every occurrence and the selected method’s calculation time. **Selection inspector** explains the model’s choice. **Compare algorithms** runs each eligible method on the same input, checks that their ordered results agree, and reports the median of three timing samples.
 
 ## Try the CLI
 
