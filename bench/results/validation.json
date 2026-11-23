@@ -1,0 +1,6616 @@
+{
+  "meta": {
+    "id": "validation-2026-11-22T14-12-04-517Z",
+    "createdAt": "2026-11-22T14:12:04.517Z",
+    "cpu": "13th Gen Intel(R) Core(TM) i7-13620H",
+    "node": "v24.22.3",
+    "platform": "win32 x64",
+    "repetitions": 3,
+    "warmups": 1,
+    "units": "milliseconds per complete atom invocation",
+    "atoms": [
+      {
+        "name": "bm4DNADS",
+        "version": "1.0.0",
+        "kind": "atom",
+        "task": "sequence.pattern-match.exact",
+        "title": "DNA skip search",
+        "references": [
+          "Allmer 2016"
+        ]
+      },
+      {
+        "name": "bm4DNAHMbs",
+        "version": "1.0.0",
+        "kind": "atom",
+        "task": "sequence.pattern-match.exact",
+        "title": "Hashed block search",
+        "references": [
+          "Allmer 2016; Wu & Manber 1994"
+        ]
+      },
+      {
+        "name": "KMPSearch",
+        "version": "1.0.0",
+        "kind": "atom",
+        "task": "sequence.pattern-match.exact",
+        "title": "Knuth–Morris–Pratt",
+        "references": [
+          "Knuth, Morris & Pratt 1977"
+        ]
+      },
+      {
+        "name": "AhoCorasickSearch",
+        "version": "1.0.0",
+        "kind": "atom",
+        "task": "sequence.pattern-match.exact",
+        "title": "Aho–Corasick",
+        "references": [
+          "Aho & Corasick 1975"
+        ]
+      }
+    ],
+    "generation": "xorshift32 uniform independent code units; even-indexed patterns sampled from the record, odd-indexed patterns sampled independently",
+    "boundary": "construct a fresh atom, process one record, consume all ordered hits; input generation, parsing, selection, and disk I/O excluded",
+    "order": "registry order rotated by case ordinal"
+  },
+  "calibrationId": "calibration-2026-11-22T14-10-48-756Z",
+  "policies": [
+    {
+      "policy": "auto",
+      "fastestRate": 0.92,
+      "within10Rate": 0.93,
+      "geometricSlowdown": 1.023921073905923,
+      "worstSlowdown": 1.84309176384527,
+      "totalRatio": 1.047382333554301,
+      "worstCase": "V092"
+    },
+    {
+      "policy": "bm4DNADS",
+      "fastestRate": 0.01,
+      "within10Rate": 0.01,
+      "geometricSlowdown": 4.982686653172399,
+      "worstSlowdown": 15.044822557114514,
+      "totalRatio": 5.56163823955178,
+      "worstCase": "V061"
+    },
+    {
+      "policy": "bm4DNAHMbs",
+      "fastestRate": 0.82,
+      "within10Rate": 0.83,
+      "geometricSlowdown": 1.1237501101718526,
+      "worstSlowdown": 4.683915436447136,
+      "totalRatio": 1.5857265810800143,
+      "worstCase": "V060"
+    },
+    {
+      "policy": "KMPSearch",
+      "fastestRate": 0,
+      "within10Rate": 0,
+      "geometricSlowdown": 11.815815976597364,
+      "worstSlowdown": 67.89484909886347,
+      "totalRatio": 9.096523515871048,
+      "worstCase": "V022"
+    },
+    {
+      "policy": "AhoCorasickSearch",
+      "fastestRate": 0.17,
+      "within10Rate": 0.17,
+      "geometricSlowdown": 5.8313878133979316,
+      "worstSlowdown": 73.03028687213846,
+      "totalRatio": 2.9206402420066486,
+      "worstCase": "V022"
+    },
+    {
+      "policy": "Allmer 2016",
+      "fastestRate": 0.22,
+      "within10Rate": 0.23,
+      "geometricSlowdown": 3.249416217969404,
+      "worstSlowdown": 12.670159619854136,
+      "totalRatio": 4.474456805165478,
+      "worstCase": "V049"
+    }
+  ],
+  "cases": [
+    {
+      "id": "V001",
+      "seed": 3221225472,
+      "alphabet": "DNA",
+      "n": 91962,
+      "m": 9,
+      "k": 2,
+      "shape": {
+        "n": 91962,
+        "sigma": 4,
+        "k": 2,
+        "min": 9,
+        "max": 9,
+        "mean": 9
+      },
+      "hits": 1,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            1.8145000000000024,
+            2.027700000000003,
+            1.1585999999999999
+          ],
+          "medianMs": 1.8145000000000024,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.5935500000000005,
+            0.6010500000000008,
+            0.46170000000000044
+          ],
+          "medianMs": 0.5935500000000005,
+          "batch": 2
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            1.7598000000000056,
+            3.2590000000000003,
+            1.4814000000000078
+          ],
+          "medianMs": 1.7598000000000056,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            2.9839999999999947,
+            2.5311999999999983,
+            2.5076000000000107
+          ],
+          "medianMs": 2.5311999999999983,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.6527124080331802,
+        "bm4DNAHMbs": 0.11981226485967938,
+        "KMPSearch": 0.6915439749632804,
+        "AhoCorasickSearch": 1.4660952984996696
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V002",
+      "seed": 3221291009,
+      "alphabet": "Protein",
+      "n": 72425,
+      "m": 17,
+      "k": 10,
+      "shape": {
+        "n": 72425,
+        "sigma": 20,
+        "k": 10,
+        "min": 17,
+        "max": 17,
+        "mean": 17
+      },
+      "hits": 5,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.27513333333333395,
+            0.28436666666666593,
+            0.3501333333333321
+          ],
+          "medianMs": 0.28436666666666593,
+          "batch": 3
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            2.8012999999999977,
+            2.7379000000000104,
+            2.6935000000000002
+          ],
+          "medianMs": 2.7379000000000104,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.5566999999999922,
+            1.5908999999999907,
+            1.5230999999999995
+          ],
+          "medianMs": 1.5566999999999922,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            1.120599999999996,
+            1.0942000000000007,
+            1.0760000000000076
+          ],
+          "medianMs": 1.0942000000000007,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.6056668198436321,
+        "bm4DNAHMbs": 0.24707147204625615,
+        "KMPSearch": 2.727146619542842,
+        "AhoCorasickSearch": 1.173792134724654
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V003",
+      "seed": 3221356546,
+      "alphabet": "Text",
+      "n": 22673,
+      "m": 41,
+      "k": 24,
+      "shape": {
+        "n": 22673,
+        "sigma": 56,
+        "k": 24,
+        "min": 41,
+        "max": 41,
+        "mean": 41
+      },
+      "hits": 12,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            1.7530000000000001,
+            1.7607,
+            1.8250000000000028
+          ],
+          "medianMs": 1.7607,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            0.7979500000000002,
+            0.6550500000000028,
+            0.7095999999999947
+          ],
+          "medianMs": 0.7095999999999947,
+          "batch": 2
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.3934333333333342,
+            0.3443666666666682,
+            0.3424666666666667
+          ],
+          "medianMs": 0.3443666666666682,
+          "batch": 3
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.11160000000000043,
+            0.10145000000000455,
+            0.1132833333333328
+          ],
+          "medianMs": 0.11160000000000043,
+          "batch": 6
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.19418881195712076,
+        "bm4DNAHMbs": 0.11377701739729343,
+        "KMPSearch": 2.0836075571415895,
+        "AhoCorasickSearch": 0.4819307441392644
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V004",
+      "seed": 3221422083,
+      "alphabet": "Binary",
+      "n": 57976,
+      "m": 55,
+      "k": 2,
+      "shape": {
+        "n": 57976,
+        "sigma": 2,
+        "k": 2,
+        "min": 55,
+        "max": 55,
+        "mean": 55
+      },
+      "hits": 1,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.0357999999999947,
+            1.0480000000000018,
+            1.0546999999999969
+          ],
+          "medianMs": 1.0480000000000018,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            1.0343000000000018,
+            1.0518999999999892,
+            1.0893000000000086
+          ],
+          "medianMs": 1.0518999999999892,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.5136499999999984,
+            0.5103000000000009,
+            0.511099999999999
+          ],
+          "medianMs": 0.511099999999999,
+          "batch": 2
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            1.2143999999999835,
+            1.1970000000000027,
+            1.1876000000000033
+          ],
+          "medianMs": 1.1970000000000027,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.8235009667973352,
+        "bm4DNAHMbs": 0.15027999623517677,
+        "KMPSearch": 0.4399611701292352,
+        "AhoCorasickSearch": 0.936409232513762
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1
+    },
+    {
+      "id": "V005",
+      "seed": 3221487620,
+      "alphabet": "DNA",
+      "n": 548231,
+      "m": 12,
+      "k": 5,
+      "shape": {
+        "n": 548231,
+        "sigma": 4,
+        "k": 5,
+        "min": 12,
+        "max": 12,
+        "mean": 12
+      },
+      "hits": 3,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            10.409400000000005,
+            10.1738,
+            10.129099999999994
+          ],
+          "medianMs": 10.1738,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            1.8726000000000056,
+            1.8182999999999936,
+            1.8649999999999807
+          ],
+          "medianMs": 1.8649999999999807,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            19.139800000000008,
+            19.72509999999997,
+            19.488800000000026
+          ],
+          "medianMs": 19.488800000000026,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            12.658500000000004,
+            12.743200000000002,
+            12.897299999999973
+          ],
+          "medianMs": 12.743200000000002,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 9.726622509852128,
+        "bm4DNAHMbs": 1.2683248707407773,
+        "KMPSearch": 10.298170381987038,
+        "AhoCorasickSearch": 8.734301836508427
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V006",
+      "seed": 3221553157,
+      "alphabet": "Protein",
+      "n": 723386,
+      "m": 31,
+      "k": 28,
+      "shape": {
+        "n": 723386,
+        "sigma": 20,
+        "k": 28,
+        "min": 31,
+        "max": 31,
+        "mean": 31
+      },
+      "hits": 14,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            2.9746999999999844,
+            2.953200000000038,
+            3.001199999999983
+          ],
+          "medianMs": 2.9746999999999844,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            77.60019999999997,
+            76.86040000000003,
+            76.64779999999996
+          ],
+          "medianMs": 76.86040000000003,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            19.688800000000015,
+            20.665700000000015,
+            20.06650000000002
+          ],
+          "medianMs": 20.06650000000002,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            20.508299999999963,
+            20.534599999999955,
+            20.315799999999967
+          ],
+          "medianMs": 20.508299999999963,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 14.37890579764998,
+        "bm4DNAHMbs": 3.4636633405284516,
+        "KMPSearch": 76.11190216491181,
+        "AhoCorasickSearch": 11.621846782017975
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V007",
+      "seed": 3221618694,
+      "alphabet": "Text",
+      "n": 192082,
+      "m": 45,
+      "k": 2,
+      "shape": {
+        "n": 192082,
+        "sigma": 56,
+        "k": 2,
+        "min": 45,
+        "max": 45,
+        "mean": 45
+      },
+      "hits": 1,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            1.1925999999999704,
+            1.191599999999994,
+            1.1851999999998952
+          ],
+          "medianMs": 1.191599999999994,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.7229999999999563,
+            1.5751000000000204,
+            1.54200000000003
+          ],
+          "medianMs": 1.5751000000000204,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.22560000000000854,
+            0.20960000000000037,
+            0.1753800000000183
+          ],
+          "medianMs": 0.20960000000000037,
+          "batch": 5
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.042369999999999665,
+            0.05075999999999681,
+            0.04234000000000151
+          ],
+          "medianMs": 0.042369999999999665,
+          "batch": 20
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.12169719971165924,
+        "bm4DNAHMbs": 0.04788525412091998,
+        "KMPSearch": 1.446553655957829,
+        "AhoCorasickSearch": 3.0686933817122775
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V008",
+      "seed": 3221684231,
+      "alphabet": "Binary",
+      "n": 521375,
+      "m": 81,
+      "k": 5,
+      "shape": {
+        "n": 521375,
+        "sigma": 2,
+        "k": 5,
+        "min": 81,
+        "max": 81,
+        "mean": 81
+      },
+      "hits": 3,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            9.672500000000014,
+            9.510099999999966,
+            9.394400000000019
+          ],
+          "medianMs": 9.510099999999966,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            27.323099999999954,
+            26.765500000000088,
+            26.276499999999942
+          ],
+          "medianMs": 26.765500000000088,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            10.248499999999922,
+            10.378999999999905,
+            10.327400000000125
+          ],
+          "medianMs": 10.327400000000125,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            27.850200000000086,
+            27.97460000000001,
+            28.057400000000143
+          ],
+          "medianMs": 27.97460000000001,
+          "batch": 1
+        }
+      },
+      "winner": "AhoCorasickSearch",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 18.502016159573753,
+        "bm4DNAHMbs": 3.3028981849083205,
+        "KMPSearch": 9.807763335830225,
+        "AhoCorasickSearch": 8.349227952791017
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1.085940210933656
+    },
+    {
+      "id": "V009",
+      "seed": 3221749768,
+      "alphabet": "DNA",
+      "n": 44382,
+      "m": 24,
+      "k": 27,
+      "shape": {
+        "n": 44382,
+        "sigma": 4,
+        "k": 27,
+        "min": 24,
+        "max": 24,
+        "mean": 24
+      },
+      "hits": 14,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            4.995599999999968,
+            5.221199999999953,
+            5.190399999999954
+          ],
+          "medianMs": 5.190399999999954,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.59375,
+            0.6089499999999362,
+            0.5954000000000406
+          ],
+          "medianMs": 0.5954000000000406,
+          "batch": 2
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            9.162900000000036,
+            9.000099999999975,
+            9.331300000000056
+          ],
+          "medianMs": 9.162900000000036,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.455199999999877,
+            1.210299999999961,
+            1.2059999999999036
+          ],
+          "medianMs": 1.210299999999961,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 4.255734775379978,
+        "bm4DNAHMbs": 0.4283030231046447,
+        "KMPSearch": 4.52704890248065,
+        "AhoCorasickSearch": 0.7861798136799326
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V010",
+      "seed": 3221815305,
+      "alphabet": "Protein",
+      "n": 73117,
+      "m": 42,
+      "k": 2,
+      "shape": {
+        "n": 73117,
+        "sigma": 20,
+        "k": 2,
+        "min": 42,
+        "max": 42,
+        "mean": 42
+      },
+      "hits": 1,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.0203975000000014,
+            0.01947499999999991,
+            0.021049999999996773
+          ],
+          "medianMs": 0.0203975000000014,
+          "batch": 40
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            0.5514500000000453,
+            0.550200000000018,
+            0.5504000000000815
+          ],
+          "medianMs": 0.5504000000000815,
+          "batch": 2
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            0.7768000000000939,
+            0.7823500000000649,
+            0.7094999999999345
+          ],
+          "medianMs": 0.7768000000000939,
+          "batch": 2
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.11611249999998563,
+            0.13916249999999764,
+            0.13406249999999886
+          ],
+          "medianMs": 0.13406249999999886,
+          "batch": 8
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.10427140802100085,
+        "bm4DNAHMbs": 0.0217791633294609,
+        "KMPSearch": 0.5526489153382107,
+        "AhoCorasickSearch": 1.1742311576557656
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V011",
+      "seed": 3221880842,
+      "alphabet": "Text",
+      "n": 62959,
+      "m": 91,
+      "k": 10,
+      "shape": {
+        "n": 62959,
+        "sigma": 56,
+        "k": 10,
+        "min": 91,
+        "max": 91,
+        "mean": 91
+      },
+      "hits": 5,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            2.0570000000000164,
+            1.980099999999993,
+            1.9596000000001368
+          ],
+          "medianMs": 1.980099999999993,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.2898999999999887,
+            1.2475999999999203,
+            1.4816999999998188
+          ],
+          "medianMs": 1.2898999999999887,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.2320799999999963,
+            0.23221999999996115,
+            0.2252599999999802
+          ],
+          "medianMs": 0.2320799999999963,
+          "batch": 5
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.08202000000001135,
+            0.0731199999999717,
+            0.06507999999998901
+          ],
+          "medianMs": 0.0731199999999717,
+          "batch": 5
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.16494907500367476,
+        "bm4DNAHMbs": 0.05499445606589219,
+        "KMPSearch": 2.401520114932326,
+        "AhoCorasickSearch": 1.1141159780887886
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1
+    },
+    {
+      "id": "V012",
+      "seed": 3221946379,
+      "alphabet": "Binary",
+      "n": 13478,
+      "m": 10,
+      "k": 14,
+      "shape": {
+        "n": 13478,
+        "sigma": 2,
+        "k": 14,
+        "min": 10,
+        "max": 10,
+        "mean": 10
+      },
+      "hits": 188,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            0.3108500000000163,
+            0.2926249999999868,
+            0.26597500000002583
+          ],
+          "medianMs": 0.2926249999999868,
+          "batch": 4
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            1.866700000000037,
+            1.789299999999912,
+            1.7309999999999945
+          ],
+          "medianMs": 1.789299999999912,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.8495499999999083,
+            0.7182500000000118,
+            0.6973500000000286
+          ],
+          "medianMs": 0.7182500000000118,
+          "batch": 2
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            1.940599999999904,
+            1.7717999999999847,
+            1.7436999999999898
+          ],
+          "medianMs": 1.7717999999999847,
+          "batch": 1
+        }
+      },
+      "winner": "AhoCorasickSearch",
+      "selected": "AhoCorasickSearch",
+      "estimates": {
+        "bm4DNADS": 1.3398759267484552,
+        "bm4DNAHMbs": 0.2638737658401686,
+        "KMPSearch": 0.714384507360983,
+        "AhoCorasickSearch": 0.23176477199385498
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V013",
+      "seed": 3222011916,
+      "alphabet": "DNA",
+      "n": 852631,
+      "m": 21,
+      "k": 3,
+      "shape": {
+        "n": 852631,
+        "sigma": 4,
+        "k": 3,
+        "min": 21,
+        "max": 21,
+        "mean": 21
+      },
+      "hits": 2,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            12.49720000000002,
+            13.365800000000036,
+            12.770700000000033
+          ],
+          "medianMs": 12.770700000000033,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            1.4003000000000156,
+            1.3476999999998043,
+            1.3543999999999414
+          ],
+          "medianMs": 1.3543999999999414,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            20.889499999999998,
+            20.854700000000093,
+            21.28430000000003
+          ],
+          "medianMs": 20.889499999999998,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            17.291000000000167,
+            16.521999999999935,
+            16.702399999999898
+          ],
+          "medianMs": 16.702399999999898,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 9.076383242153742,
+        "bm4DNAHMbs": 0.8133453723559273,
+        "KMPSearch": 9.609961818761748,
+        "AhoCorasickSearch": 13.5802109539599
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V014",
+      "seed": 3222077453,
+      "alphabet": "Protein",
+      "n": 189641,
+      "m": 40,
+      "k": 6,
+      "shape": {
+        "n": 189641,
+        "sigma": 20,
+        "k": 6,
+        "min": 40,
+        "max": 40,
+        "mean": 40
+      },
+      "hits": 3,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.1386749999999779,
+            0.136874999999975,
+            0.16170000000005302
+          ],
+          "medianMs": 0.1386749999999779,
+          "batch": 4
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            4.480800000000045,
+            4.348099999999931,
+            4.47180000000003
+          ],
+          "medianMs": 4.47180000000003,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            3.1281000000001313,
+            3.5816999999999553,
+            3.199500000000171
+          ],
+          "medianMs": 3.199500000000171,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.9852000000000771,
+            0.9826000000000477,
+            0.9736000000000331
+          ],
+          "medianMs": 0.9826000000000477,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.8088889721385536,
+        "bm4DNAHMbs": 0.15867379932109488,
+        "KMPSearch": 4.283437987568116,
+        "AhoCorasickSearch": 3.048284052523682
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V015",
+      "seed": 3222142990,
+      "alphabet": "Text",
+      "n": 199988,
+      "m": 51,
+      "k": 29,
+      "shape": {
+        "n": 199988,
+        "sigma": 56,
+        "k": 29,
+        "min": 51,
+        "max": 51,
+        "mean": 51
+      },
+      "hits": 15,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            19.28949999999986,
+            18.53970000000004,
+            19.022000000000162
+          ],
+          "medianMs": 19.022000000000162,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            4.783099999999877,
+            5.100900000000138,
+            5.010299999999916
+          ],
+          "medianMs": 5.010299999999916,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            3.1272999999998774,
+            3.0950000000000273,
+            2.8243999999999687
+          ],
+          "medianMs": 3.0950000000000273,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.795699999999897,
+            0.7669000000000779,
+            0.7518000000000029
+          ],
+          "medianMs": 0.7669000000000779,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 1.6227508808662594,
+        "bm4DNAHMbs": 0.6410478668910649,
+        "KMPSearch": 21.84321250372463,
+        "AhoCorasickSearch": 3.3653658815206096
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1
+    },
+    {
+      "id": "V016",
+      "seed": 3222208527,
+      "alphabet": "Binary",
+      "n": 768536,
+      "m": 5,
+      "k": 3,
+      "shape": {
+        "n": 768536,
+        "sigma": 2,
+        "k": 3,
+        "min": 5,
+        "max": 5,
+        "mean": 5
+      },
+      "hits": 72162,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            23.653999999999996,
+            17.08459999999991,
+            18.95770000000016
+          ],
+          "medianMs": 18.95770000000016,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            25.013300000000072,
+            21.52520000000004,
+            21.86290000000008
+          ],
+          "medianMs": 21.86290000000008,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            13.577800000000025,
+            15.107899999999972,
+            14.571099999999888
+          ],
+          "medianMs": 14.571099999999888,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            29.093099999999822,
+            29.24079999999981,
+            29.911800000000085
+          ],
+          "medianMs": 29.24079999999981,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 16.36177600927441,
+        "bm4DNAHMbs": 2.918023642483489,
+        "KMPSearch": 8.660441977269041,
+        "AhoCorasickSearch": 12.235655707284728
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V017",
+      "seed": 3222274064,
+      "alphabet": "DNA",
+      "n": 43284,
+      "m": 49,
+      "k": 6,
+      "shape": {
+        "n": 43284,
+        "sigma": 4,
+        "k": 6,
+        "min": 49,
+        "max": 49,
+        "mean": 49
+      },
+      "hits": 3,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            0.9363000000003012,
+            0.9170000000003711,
+            0.9312999999997373
+          ],
+          "medianMs": 0.9312999999997373,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.11362222222219821,
+            0.11189999999997882,
+            0.10793333333332258
+          ],
+          "medianMs": 0.11189999999997882,
+          "batch": 9
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            2.2182000000002517,
+            2.2070000000003347,
+            2.2916000000000167
+          ],
+          "medianMs": 2.2182000000002517,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.502599999999802,
+            1.7682999999997264,
+            2.023200000000088
+          ],
+          "medianMs": 1.7682999999997264,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.9232302494672016,
+        "bm4DNAHMbs": 0.09336215717792215,
+        "KMPSearch": 0.9873303322255241,
+        "AhoCorasickSearch": 0.7251658137982437
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V018",
+      "seed": 3222339601,
+      "alphabet": "Protein",
+      "n": 92928,
+      "m": 81,
+      "k": 13,
+      "shape": {
+        "n": 92928,
+        "sigma": 20,
+        "k": 13,
+        "min": 81,
+        "max": 81,
+        "mean": 81
+      },
+      "hits": 7,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.11789999999996326,
+            0.09815000000003238,
+            0.10364999999994022
+          ],
+          "medianMs": 0.10364999999994022,
+          "batch": 6
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            6.1797999999998865,
+            6.22649999999976,
+            6.261500000000069
+          ],
+          "medianMs": 6.22649999999976,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            2.2595000000001164,
+            2.1956999999997606,
+            2.1006999999999607
+          ],
+          "medianMs": 2.1956999999997606,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.8528000000001157,
+            0.820699999999988,
+            0.8253500000000713
+          ],
+          "medianMs": 0.8253500000000713,
+          "batch": 2
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.8635275954630425,
+        "bm4DNAHMbs": 0.10161596312113538,
+        "KMPSearch": 4.580042348435571,
+        "AhoCorasickSearch": 1.6087589046041788
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1
+    },
+    {
+      "id": "V019",
+      "seed": 3222405138,
+      "alphabet": "Text",
+      "n": 14781,
+      "m": 13,
+      "k": 2,
+      "shape": {
+        "n": 14781,
+        "sigma": 56,
+        "k": 2,
+        "min": 13,
+        "max": 13,
+        "mean": 13
+      },
+      "hits": 1,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            0.12005555555555879,
+            0.12008888888890902,
+            0.12518888888886673
+          ],
+          "medianMs": 0.12008888888890902,
+          "batch": 9
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            0.12746250000003556,
+            0.12317500000000337,
+            0.12478750000002492
+          ],
+          "medianMs": 0.12478750000002492,
+          "batch": 8
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.016784000000006925,
+            0.01539600000000064,
+            0.015104000000010274
+          ],
+          "medianMs": 0.01539600000000064,
+          "batch": 25
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.017694999999991978,
+            0.01943750000000364,
+            0.018032499999992523
+          ],
+          "medianMs": 0.018032499999992523,
+          "batch": 40
+        }
+      },
+      "winner": "bm4DNADS",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.03242854450693616,
+        "bm4DNAHMbs": 0.01610253667408153,
+        "KMPSearch": 0.11208559041780325,
+        "AhoCorasickSearch": 0.2384863961428109
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1.1712457781236538
+    },
+    {
+      "id": "V020",
+      "seed": 3222470675,
+      "alphabet": "Binary",
+      "n": 17100,
+      "m": 25,
+      "k": 10,
+      "shape": {
+        "n": 17100,
+        "sigma": 2,
+        "k": 10,
+        "min": 25,
+        "max": 25,
+        "mean": 25
+      },
+      "hits": 5,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            0.3478333333332557,
+            0.4115666666666584,
+            0.3227000000000165
+          ],
+          "medianMs": 0.3478333333332557,
+          "batch": 3
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            1.5199000000002343,
+            1.543999999999869,
+            1.7822999999998501
+          ],
+          "medianMs": 1.543999999999869,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.5225000000000364,
+            0.5099500000001171,
+            0.553899999999885
+          ],
+          "medianMs": 0.5225000000000364,
+          "batch": 2
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            1.986399999999776,
+            2.14200000000028,
+            2.2211999999999534
+          ],
+          "medianMs": 2.14200000000028,
+          "batch": 1
+        }
+      },
+      "winner": "AhoCorasickSearch",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 1.2149757186097037,
+        "bm4DNAHMbs": 0.23450086854484878,
+        "KMPSearch": 0.6523804400979113,
+        "AhoCorasickSearch": 0.3029490029998701
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1.5021562050795005
+    },
+    {
+      "id": "V021",
+      "seed": 3222536212,
+      "alphabet": "DNA",
+      "n": 888125,
+      "m": 37,
+      "k": 23,
+      "shape": {
+        "n": 888125,
+        "sigma": 4,
+        "k": 23,
+        "min": 37,
+        "max": 37,
+        "mean": 37
+      },
+      "hits": 12,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            100.2188000000001,
+            100.70590000000038,
+            102.33550000000014
+          ],
+          "medianMs": 100.70590000000038,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            8.150000000000091,
+            8.233600000000024,
+            8.230299999999716
+          ],
+          "medianMs": 8.230299999999716,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            184.72869999999966,
+            192.35199999999986,
+            187.8363000000004
+          ],
+          "medianMs": 187.8363000000004,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            24.68419999999969,
+            25.2511999999997,
+            24.6259
+          ],
+          "medianMs": 24.68419999999969,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 72.48442730892012,
+        "bm4DNAHMbs": 6.494115810496844,
+        "KMPSearch": 76.75749647919679,
+        "AhoCorasickSearch": 14.242126132713825
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V022",
+      "seed": 3222601749,
+      "alphabet": "Protein",
+      "n": 847534,
+      "m": 71,
+      "k": 3,
+      "shape": {
+        "n": 847534,
+        "sigma": 20,
+        "k": 3,
+        "min": 71,
+        "max": 71,
+        "mean": 71
+      },
+      "hits": 2,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.1843399999999747,
+            0.20219999999999344,
+            0.18753999999998996
+          ],
+          "medianMs": 0.18753999999998996,
+          "batch": 5
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            12.733000000000175,
+            12.172300000000178,
+            12.911599999999908
+          ],
+          "medianMs": 12.733000000000175,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            13.813900000000103,
+            13.696100000000115,
+            13.55789999999979
+          ],
+          "medianMs": 13.696100000000115,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            2.5679999999997563,
+            2.0840000000002874,
+            2.088999999999942
+          ],
+          "medianMs": 2.088999999999942,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 1.8056107237718548,
+        "bm4DNAHMbs": 0.18932925383117305,
+        "KMPSearch": 9.558592921695293,
+        "AhoCorasickSearch": 13.517522535762131
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1
+    },
+    {
+      "id": "V023",
+      "seed": 3222667286,
+      "alphabet": "Text",
+      "n": 791334,
+      "m": 8,
+      "k": 8,
+      "shape": {
+        "n": 791334,
+        "sigma": 56,
+        "k": 8,
+        "min": 8,
+        "max": 8,
+        "mean": 8
+      },
+      "hits": 4,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            25.644300000000385,
+            24.659300000000258,
+            26.15119999999979
+          ],
+          "medianMs": 25.644300000000385,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            13.441599999999653,
+            13.230799999999817,
+            13.841199999999844
+          ],
+          "medianMs": 13.441599999999653,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            10.879500000000007,
+            11.233400000000074,
+            10.960799999999836
+          ],
+          "medianMs": 10.960799999999836,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            3.8324000000002343,
+            3.8921000000000276,
+            3.921400000000176
+          ],
+          "medianMs": 3.8921000000000276,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 11.231740893147771,
+        "bm4DNAHMbs": 4.584427126743155,
+        "KMPSearch": 23.780514249603986,
+        "AhoCorasickSearch": 12.604587957545888
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V024",
+      "seed": 3222732823,
+      "alphabet": "Binary",
+      "n": 275205,
+      "m": 31,
+      "k": 17,
+      "shape": {
+        "n": 275205,
+        "sigma": 2,
+        "k": 17,
+        "min": 31,
+        "max": 31,
+        "mean": 31
+      },
+      "hits": 9,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            5.202900000000227,
+            5.459699999999884,
+            5.310899999999947
+          ],
+          "medianMs": 5.310899999999947,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            47.47050000000036,
+            49.13670000000002,
+            46.990400000000136
+          ],
+          "medianMs": 47.47050000000036,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            16.253099999999904,
+            15.387399999999616,
+            14.570600000000013
+          ],
+          "medianMs": 15.387399999999616,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            55.906199999999444,
+            55.30340000000069,
+            55.920100000000275
+          ],
+          "medianMs": 55.906199999999444,
+          "batch": 1
+        }
+      },
+      "winner": "AhoCorasickSearch",
+      "selected": "AhoCorasickSearch",
+      "estimates": {
+        "bm4DNADS": 33.2038643057903,
+        "bm4DNAHMbs": 5.941748326761387,
+        "KMPSearch": 17.593637264283046,
+        "AhoCorasickSearch": 4.445616055956836
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V025",
+      "seed": 3222798360,
+      "alphabet": "DNA",
+      "n": 73362,
+      "m": 52,
+      "k": 3,
+      "shape": {
+        "n": 73362,
+        "sigma": 4,
+        "k": 3,
+        "min": 52,
+        "max": 52,
+        "mean": 52
+      },
+      "hits": 2,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            0.9858500000000276,
+            0.9668500000002496,
+            0.9704999999999018
+          ],
+          "medianMs": 0.9704999999999018,
+          "batch": 2
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.08616363636362868,
+            0.08483636363631707,
+            0.08417272727274394
+          ],
+          "medianMs": 0.08483636363631707,
+          "batch": 11
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            2.053200000000288,
+            2.0867000000007465,
+            2.24159999999938
+          ],
+          "medianMs": 2.0867000000007465,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.5486000000000786,
+            1.5976000000000568,
+            1.4184999999997672
+          ],
+          "medianMs": 1.5486000000000786,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.7818399751903993,
+        "bm4DNAHMbs": 0.07519420697975705,
+        "KMPSearch": 0.8329468066262338,
+        "AhoCorasickSearch": 1.1869858618054485
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1
+    },
+    {
+      "id": "V026",
+      "seed": 3222863897,
+      "alphabet": "Protein",
+      "n": 34792,
+      "m": 7,
+      "k": 7,
+      "shape": {
+        "n": 34792,
+        "sigma": 20,
+        "k": 7,
+        "min": 7,
+        "max": 7,
+        "mean": 7
+      },
+      "hits": 4,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.19328333333335954,
+            0.26443333333327246,
+            0.22671666666671322
+          ],
+          "medianMs": 0.22671666666671322,
+          "batch": 6
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            1.056100000000697,
+            1.083599999999933,
+            1.0372999999999593
+          ],
+          "medianMs": 1.056100000000697,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            0.6082000000001244,
+            0.6157499999999345,
+            0.6089000000001761
+          ],
+          "medianMs": 0.6089000000001761,
+          "batch": 2
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.527849999999944,
+            0.5136999999999716,
+            0.5150999999996202
+          ],
+          "medianMs": 0.5150999999996202,
+          "batch": 2
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.4940908660726881,
+        "bm4DNAHMbs": 0.21782267515066903,
+        "KMPSearch": 0.9167291779666481,
+        "AhoCorasickSearch": 0.559856720734057
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V027",
+      "seed": 3222929434,
+      "alphabet": "Text",
+      "n": 20307,
+      "m": 23,
+      "k": 17,
+      "shape": {
+        "n": 20307,
+        "sigma": 56,
+        "k": 17,
+        "min": 23,
+        "max": 23,
+        "mean": 23
+      },
+      "hits": 9,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            1.402499999999236,
+            1.3995000000004438,
+            1.411300000000665
+          ],
+          "medianMs": 1.402499999999236,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            0.3911666666666254,
+            0.42439999999987776,
+            0.4059333333331476
+          ],
+          "medianMs": 0.4059333333331476,
+          "batch": 3
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.27777500000001965,
+            0.26312499999994543,
+            0.2586999999998625
+          ],
+          "medianMs": 0.26312499999994543,
+          "batch": 4
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.12440000000002659,
+            0.13211818181811064,
+            0.09798181818182043
+          ],
+          "medianMs": 0.12440000000002659,
+          "batch": 11
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.21534198646007377,
+        "bm4DNAHMbs": 0.11065284227261325,
+        "KMPSearch": 1.3124449616981464,
+        "AhoCorasickSearch": 0.3713395721723508
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V028",
+      "seed": 3222994971,
+      "alphabet": "Binary",
+      "n": 25943,
+      "m": 43,
+      "k": 2,
+      "shape": {
+        "n": 25943,
+        "sigma": 2,
+        "k": 2,
+        "min": 43,
+        "max": 43,
+        "mean": 43
+      },
+      "hits": 1,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            0.43556666666669724,
+            0.4513000000000223,
+            0.42586666666647943
+          ],
+          "medianMs": 0.43556666666669724,
+          "batch": 3
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.5201000000001841,
+            0.5153500000001259,
+            0.5174499999998261
+          ],
+          "medianMs": 0.5174499999998261,
+          "batch": 2
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.18734000000004017,
+            0.2324000000000524,
+            0.30231999999996334
+          ],
+          "medianMs": 0.2324000000000524,
+          "batch": 5
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            0.6267499999999018,
+            0.6133500000000822,
+            0.6152000000001863
+          ],
+          "medianMs": 0.6152000000001863,
+          "batch": 2
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.36871631039868985,
+        "bm4DNAHMbs": 0.06930563716378062,
+        "KMPSearch": 0.1983598278374588,
+        "AhoCorasickSearch": 0.42354574203851064
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V029",
+      "seed": 3223060508,
+      "alphabet": "DNA",
+      "n": 732585,
+      "m": 90,
+      "k": 7,
+      "shape": {
+        "n": 732585,
+        "sigma": 4,
+        "k": 7,
+        "min": 90,
+        "max": 90,
+        "mean": 90
+      },
+      "hits": 4,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            25.689499999999498,
+            25.90189999999984,
+            25.925500000000284
+          ],
+          "medianMs": 25.90189999999984,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            2.036099999999351,
+            1.9696999999996478,
+            1.899199999999837
+          ],
+          "medianMs": 1.9696999999996478,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            39.238499999999476,
+            39.26140000000032,
+            39.20960000000014
+          ],
+          "medianMs": 39.238499999999476,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            17.004799999999705,
+            17.0016999999998,
+            17.070600000000013
+          ],
+          "medianMs": 17.004799999999705,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 18.199422712070298,
+        "bm4DNAHMbs": 1.6332704325578078,
+        "KMPSearch": 19.28653083879599,
+        "AhoCorasickSearch": 11.739009770015075
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1
+    },
+    {
+      "id": "V030",
+      "seed": 3223126045,
+      "alphabet": "Protein",
+      "n": 525082,
+      "m": 8,
+      "k": 13,
+      "shape": {
+        "n": 525082,
+        "sigma": 20,
+        "k": 13,
+        "min": 8,
+        "max": 8,
+        "mean": 8
+      },
+      "hits": 7,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            5.15059999999994,
+            4.412099999999555,
+            4.604000000000269
+          ],
+          "medianMs": 4.604000000000269,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            23.415400000000773,
+            22.646099999999933,
+            23.057299999999486
+          ],
+          "medianMs": 23.057299999999486,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            12.39220000000023,
+            11.708099999999831,
+            11.904100000000653
+          ],
+          "medianMs": 11.904100000000653,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            15.449200000000019,
+            15.050500000000284,
+            14.870100000000093
+          ],
+          "medianMs": 15.050500000000284,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 12.110865142331278,
+        "bm4DNAHMbs": 4.951125763540909,
+        "KMPSearch": 25.64282512748479,
+        "AhoCorasickSearch": 8.371219589291167
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V031",
+      "seed": 3223191582,
+      "alphabet": "Text",
+      "n": 177383,
+      "m": 29,
+      "k": 3,
+      "shape": {
+        "n": 177383,
+        "sigma": 56,
+        "k": 3,
+        "min": 29,
+        "max": 29,
+        "mean": 29
+      },
+      "hits": 2,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            1.8921999999993204,
+            1.927599999999984,
+            1.7707000000000335
+          ],
+          "medianMs": 1.8921999999993204,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            2.791200000000572,
+            2.5263999999997395,
+            2.9861999999993714
+          ],
+          "medianMs": 2.791200000000572,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.3731333333331956,
+            0.3716666666665939,
+            0.3757666666663984
+          ],
+          "medianMs": 0.3731333333331956,
+          "batch": 3
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.09933000000000902,
+            0.10889999999999418,
+            0.10621000000001005
+          ],
+          "medianMs": 0.10621000000001005,
+          "batch": 10
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.2609546810441226,
+        "bm4DNAHMbs": 0.10160083749782718,
+        "KMPSearch": 2.002262236546499,
+        "AhoCorasickSearch": 2.8343408776065697
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V032",
+      "seed": 3223257119,
+      "alphabet": "Binary",
+      "n": 322124,
+      "m": 35,
+      "k": 6,
+      "shape": {
+        "n": 322124,
+        "sigma": 2,
+        "k": 6,
+        "min": 35,
+        "max": 35,
+        "mean": 35
+      },
+      "hits": 3,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            5.505599999999504,
+            5.506000000000313,
+            6.2465000000001965
+          ],
+          "medianMs": 5.506000000000313,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            21.07430000000022,
+            20.6270999999997,
+            20.777899999999136
+          ],
+          "medianMs": 20.777899999999136,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            7.001900000000205,
+            7.143500000000131,
+            6.807600000000093
+          ],
+          "medianMs": 7.001900000000205,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            20.98999999999978,
+            20.856799999999566,
+            21.20310000000063
+          ],
+          "medianMs": 20.98999999999978,
+          "batch": 1
+        }
+      },
+      "winner": "AhoCorasickSearch",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 13.716909672193799,
+        "bm4DNAHMbs": 2.4527555550039257,
+        "KMPSearch": 7.2678524181417785,
+        "AhoCorasickSearch": 5.153502928130963
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1.2716854340718866
+    },
+    {
+      "id": "V033",
+      "seed": 3223322656,
+      "alphabet": "DNA",
+      "n": 22084,
+      "m": 13,
+      "k": 18,
+      "shape": {
+        "n": 22084,
+        "sigma": 4,
+        "k": 18,
+        "min": 13,
+        "max": 13,
+        "mean": 13
+      },
+      "hits": 9,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            2.102700000000368,
+            2.0088999999998123,
+            2.15520000000015
+          ],
+          "medianMs": 2.102700000000368,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.2842000000000553,
+            0.28920000000016444,
+            0.2807000000000244
+          ],
+          "medianMs": 0.2842000000000553,
+          "batch": 4
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            3.1548000000002503,
+            2.945600000000013,
+            3.199200000000019
+          ],
+          "medianMs": 3.1548000000002503,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            0.5995499999999083,
+            0.5994500000001608,
+            0.5945500000002539
+          ],
+          "medianMs": 0.5994500000001608,
+          "batch": 2
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 1.411850817484345,
+        "bm4DNAHMbs": 0.20027639517740103,
+        "KMPSearch": 1.5025099378074616,
+        "AhoCorasickSearch": 0.38031825424513577
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V034",
+      "seed": 3223388193,
+      "alphabet": "Protein",
+      "n": 72204,
+      "m": 29,
+      "k": 3,
+      "shape": {
+        "n": 72204,
+        "sigma": 20,
+        "k": 3,
+        "min": 29,
+        "max": 29,
+        "mean": 29
+      },
+      "hits": 2,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.03946086956519772,
+            0.03874782608695766,
+            0.03890000000003214
+          ],
+          "medianMs": 0.03890000000003214,
+          "batch": 23
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            0.8468500000003587,
+            0.8324499999998807,
+            0.8296999999997752
+          ],
+          "medianMs": 0.8324499999998807,
+          "batch": 2
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.1656000000002678,
+            1.177799999999479,
+            1.2300999999997657
+          ],
+          "medianMs": 1.177799999999479,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.21264000000010128,
+            0.19446000000007188,
+            0.1925199999999677
+          ],
+          "medianMs": 0.19446000000007188,
+          "batch": 5
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.15423271685080875,
+        "bm4DNAHMbs": 0.04465718787463052,
+        "KMPSearch": 0.8171091050100562,
+        "AhoCorasickSearch": 1.1600666671789412
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V035",
+      "seed": 3223453730,
+      "alphabet": "Text",
+      "n": 50412,
+      "m": 49,
+      "k": 11,
+      "shape": {
+        "n": 50412,
+        "sigma": 56,
+        "k": 11,
+        "min": 49,
+        "max": 49,
+        "mean": 49
+      },
+      "hits": 6,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            1.7509000000000015,
+            1.742300000000796,
+            1.748500000000604
+          ],
+          "medianMs": 1.748500000000604,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            0.9699000000000524,
+            0.9763499999999112,
+            0.9673499999998967
+          ],
+          "medianMs": 0.9699000000000524,
+          "batch": 2
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.2988750000001801,
+            0.2826749999999265,
+            0.2810749999998734
+          ],
+          "medianMs": 0.2826749999999265,
+          "batch": 4
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.07366666666663756,
+            0.06918666666667074,
+            0.069966666666672
+          ],
+          "medianMs": 0.069966666666672,
+          "batch": 15
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.16380929423373702,
+        "bm4DNAHMbs": 0.07917329775925942,
+        "KMPSearch": 2.1046051027607717,
+        "AhoCorasickSearch": 0.8687623024164547
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V036",
+      "seed": 3223519267,
+      "alphabet": "Binary",
+      "n": 63644,
+      "m": 86,
+      "k": 21,
+      "shape": {
+        "n": 63644,
+        "sigma": 2,
+        "k": 21,
+        "min": 86,
+        "max": 86,
+        "mean": 86
+      },
+      "hits": 11,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.3056000000005952,
+            1.3130000000001019,
+            1.338900000000649
+          ],
+          "medianMs": 1.3130000000001019,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            13.08140000000003,
+            13.818299999999908,
+            13.394400000000132
+          ],
+          "medianMs": 13.394400000000132,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            4.777000000000044,
+            4.717899999999645,
+            4.6877000000004045
+          ],
+          "medianMs": 4.717899999999645,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            14.688900000000103,
+            14.858799999999974,
+            15.094900000000052
+          ],
+          "medianMs": 14.858799999999974,
+          "batch": 1
+        }
+      },
+      "winner": "AhoCorasickSearch",
+      "selected": "AhoCorasickSearch",
+      "estimates": {
+        "bm4DNADS": 9.495289692303743,
+        "bm4DNAHMbs": 1.7294504306072065,
+        "KMPSearch": 5.092977387298569,
+        "AhoCorasickSearch": 1.2352120178371295
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1
+    },
+    {
+      "id": "V037",
+      "seed": 3223584804,
+      "alphabet": "DNA",
+      "n": 177402,
+      "m": 14,
+      "k": 2,
+      "shape": {
+        "n": 177402,
+        "sigma": 4,
+        "k": 2,
+        "min": 14,
+        "max": 14,
+        "mean": 14
+      },
+      "hits": 1,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            1.699999999999818,
+            1.6864999999997963,
+            1.6072000000003754
+          ],
+          "medianMs": 1.6864999999997963,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.23971999999994295,
+            0.2503600000000006,
+            0.23700000000008004
+          ],
+          "medianMs": 0.23971999999994295,
+          "batch": 5
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            2.6895999999997002,
+            2.7340000000003783,
+            2.646600000000035
+          ],
+          "medianMs": 2.6895999999997002,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            3.4891999999999825,
+            3.615099999999984,
+            3.4849999999996726
+          ],
+          "medianMs": 3.4891999999999825,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 1.2590942953419366,
+        "bm4DNAHMbs": 0.1415686609597141,
+        "KMPSearch": 1.333771436003745,
+        "AhoCorasickSearch": 2.827387380630751
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V038",
+      "seed": 3223650341,
+      "alphabet": "Protein",
+      "n": 147414,
+      "m": 19,
+      "k": 9,
+      "shape": {
+        "n": 147414,
+        "sigma": 20,
+        "k": 9,
+        "min": 19,
+        "max": 19,
+        "mean": 19
+      },
+      "hits": 5,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.31530000000020664,
+            0.361633333333278,
+            0.3621333333333799
+          ],
+          "medianMs": 0.361633333333278,
+          "batch": 3
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            5.114399999999478,
+            5.235599999999977,
+            5.204400000000533
+          ],
+          "medianMs": 5.204400000000533,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            3.449600000000828,
+            3.6772000000000844,
+            3.4179999999996653
+          ],
+          "medianMs": 3.449600000000828,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            1.7700999999997293,
+            1.727600000000166,
+            1.9776999999994587
+          ],
+          "medianMs": 1.7700999999997293,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.992072098178299,
+        "bm4DNAHMbs": 0.3889844631966549,
+        "KMPSearch": 4.990079568773163,
+        "AhoCorasickSearch": 2.3676148930938177
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V039",
+      "seed": 3223715878,
+      "alphabet": "Text",
+      "n": 654703,
+      "m": 35,
+      "k": 17,
+      "shape": {
+        "n": 654703,
+        "sigma": 56,
+        "k": 17,
+        "min": 35,
+        "max": 35,
+        "mean": 35
+      },
+      "hits": 9,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            37.08090000000084,
+            36.1867000000002,
+            36.79699999999957
+          ],
+          "medianMs": 36.79699999999957,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            14.689499999999498,
+            14.724600000000464,
+            14.749399999999696
+          ],
+          "medianMs": 14.724600000000464,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            7.081599999999526,
+            7.882099999999809,
+            7.113600000000588
+          ],
+          "medianMs": 7.113600000000588,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            1.4884999999994761,
+            1.5868000000000393,
+            1.8216000000002168
+          ],
+          "medianMs": 1.5868000000000393,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 4.516856821950224,
+        "bm4DNAHMbs": 1.6858424495765405,
+        "KMPSearch": 41.828014012021214,
+        "AhoCorasickSearch": 10.494953885828364
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V040",
+      "seed": 3223781415,
+      "alphabet": "Binary",
+      "n": 369370,
+      "m": 78,
+      "k": 2,
+      "shape": {
+        "n": 369370,
+        "sigma": 2,
+        "k": 2,
+        "min": 78,
+        "max": 78,
+        "mean": 78
+      },
+      "hits": 1,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            6.352300000000469,
+            6.137400000000525,
+            6.069900000000416
+          ],
+          "medianMs": 6.137400000000525,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            7.587700000000041,
+            7.756100000000515,
+            7.729400000000169
+          ],
+          "medianMs": 7.729400000000169,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            3.380300000000716,
+            3.061899999999696,
+            3.0069000000003143
+          ],
+          "medianMs": 3.061899999999696,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            8.529999999999745,
+            7.941100000000006,
+            8.241500000000087
+          ],
+          "medianMs": 8.241500000000087,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 5.243371906880509,
+        "bm4DNAHMbs": 0.937104762800186,
+        "KMPSearch": 2.781004917985289,
+        "AhoCorasickSearch": 5.8989393932162955
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1
+    },
+    {
+      "id": "V041",
+      "seed": 3223846952,
+      "alphabet": "DNA",
+      "n": 95050,
+      "m": 20,
+      "k": 5,
+      "shape": {
+        "n": 95050,
+        "sigma": 4,
+        "k": 5,
+        "min": 20,
+        "max": 20,
+        "mean": 20
+      },
+      "hits": 3,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            2.762699999999313,
+            2.7170999999998457,
+            2.5895000000000437
+          ],
+          "medianMs": 2.7170999999998457,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.24551999999985127,
+            0.25010000000002036,
+            0.22828000000008614
+          ],
+          "medianMs": 0.24551999999985127,
+          "batch": 5
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            3.8092999999998938,
+            3.840900000000147,
+            3.8143999999992957
+          ],
+          "medianMs": 3.8143999999992957,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            2.1279999999997017,
+            2.1747000000004846,
+            2.115099999999984
+          ],
+          "medianMs": 2.1279999999997017,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 1.6868911047537443,
+        "bm4DNAHMbs": 0.1592887625286184,
+        "KMPSearch": 1.789075824186931,
+        "AhoCorasickSearch": 1.5253356409210055
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V042",
+      "seed": 3223912489,
+      "alphabet": "Protein",
+      "n": 29898,
+      "m": 48,
+      "k": 29,
+      "shape": {
+        "n": 29898,
+        "sigma": 20,
+        "k": 29,
+        "min": 48,
+        "max": 48,
+        "mean": 48
+      },
+      "hits": 15,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.1430000000000291,
+            0.18391666666669457,
+            0.14581666666663295
+          ],
+          "medianMs": 0.14581666666663295,
+          "batch": 6
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            3.541800000000876,
+            3.2880999999997584,
+            3.36620000000039
+          ],
+          "medianMs": 3.36620000000039,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            0.7725999999997839,
+            1.1367999999997664,
+            0.8220000000001164
+          ],
+          "medianMs": 0.8220000000001164,
+          "batch": 2
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.7117499999999382,
+            0.6985500000000684,
+            0.7228000000000065
+          ],
+          "medianMs": 0.7117499999999382,
+          "batch": 2
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.6235272817068939,
+        "bm4DNAHMbs": 0.14799373760635684,
+        "KMPSearch": 3.3128723100637916,
+        "AhoCorasickSearch": 0.6471173970405069
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V043",
+      "seed": 3223978026,
+      "alphabet": "Text",
+      "n": 79072,
+      "m": 95,
+      "k": 3,
+      "shape": {
+        "n": 79072,
+        "sigma": 56,
+        "k": 3,
+        "min": 95,
+        "max": 95,
+        "mean": 95
+      },
+      "hits": 2,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            0.7649999999998727,
+            0.762000000000171,
+            0.809099999999944
+          ],
+          "medianMs": 0.7649999999998727,
+          "batch": 2
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.1880999999993946,
+            1.2335999999995693,
+            1.2267000000001644
+          ],
+          "medianMs": 1.2267000000001644,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.08233000000000175,
+            0.08162000000002081,
+            0.0720999999999549
+          ],
+          "medianMs": 0.08162000000002081,
+          "batch": 10
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.01810232558139877,
+            0.01852325581396229,
+            0.017948837209291395
+          ],
+          "medianMs": 0.01810232558139877,
+          "batch": 43
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.06180700024838748,
+        "bm4DNAHMbs": 0.018666726723185107,
+        "KMPSearch": 0.9025018431620182,
+        "AhoCorasickSearch": 1.2937442297558812
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1
+    },
+    {
+      "id": "V044",
+      "seed": 3224043563,
+      "alphabet": "Binary",
+      "n": 64328,
+      "m": 15,
+      "k": 8,
+      "shape": {
+        "n": 64328,
+        "sigma": 2,
+        "k": 8,
+        "min": 15,
+        "max": 15,
+        "mean": 15
+      },
+      "hits": 15,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.2628999999997177,
+            1.241399999999885,
+            1.227799999999661
+          ],
+          "medianMs": 1.241399999999885,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            5.214199999999437,
+            5.610599999999977,
+            5.308899999999994
+          ],
+          "medianMs": 5.308899999999994,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            1.565599999999904,
+            1.6235999999998967,
+            1.7448999999996886
+          ],
+          "medianMs": 1.6235999999998967,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            5.36620000000039,
+            5.817700000000514,
+            5.683400000000802
+          ],
+          "medianMs": 5.683400000000802,
+          "batch": 1
+        }
+      },
+      "winner": "AhoCorasickSearch",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 3.652725606699402,
+        "bm4DNAHMbs": 0.6647500133732684,
+        "KMPSearch": 1.9377726106679816,
+        "AhoCorasickSearch": 1.0387522967391751
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1.3078782020300042
+    },
+    {
+      "id": "V045",
+      "seed": 3224109100,
+      "alphabet": "DNA",
+      "n": 325715,
+      "m": 31,
+      "k": 29,
+      "shape": {
+        "n": 325715,
+        "sigma": 4,
+        "k": 29,
+        "min": 31,
+        "max": 31,
+        "mean": 31
+      },
+      "hits": 15,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            48.99339999999938,
+            48.505599999999504,
+            49.488000000000284
+          ],
+          "medianMs": 48.99339999999938,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            4.014299999999821,
+            4.226599999999962,
+            4.441799999999603
+          ],
+          "medianMs": 4.226599999999962,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            73.1840000000002,
+            74.16060000000016,
+            73.83280000000013
+          ],
+          "medianMs": 73.83280000000013,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            9.120899999999892,
+            9.477100000000064,
+            9.403299999999945
+          ],
+          "medianMs": 9.403299999999945,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 33.52102381025007,
+        "bm4DNAHMbs": 3.0370149059610805,
+        "KMPSearch": 35.51440874493843,
+        "AhoCorasickSearch": 5.295400340279346
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V046",
+      "seed": 3224174637,
+      "alphabet": "Protein",
+      "n": 606973,
+      "m": 45,
+      "k": 2,
+      "shape": {
+        "n": 606973,
+        "sigma": 20,
+        "k": 2,
+        "min": 45,
+        "max": 45,
+        "mean": 45
+      },
+      "hits": 1,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.17316000000009807,
+            0.1510199999998804,
+            0.12441999999991822
+          ],
+          "medianMs": 0.1510199999998804,
+          "batch": 5
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            4.7577000000001135,
+            5.074900000000525,
+            4.472899999999754
+          ],
+          "medianMs": 4.7577000000001135,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            9.035200000000259,
+            9.111399999999776,
+            8.781399999999849
+          ],
+          "medianMs": 9.035200000000259,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            1.0074000000004162,
+            0.9745000000002619,
+            0.9692999999997483
+          ],
+          "medianMs": 0.9745000000002619,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.8620059435475282,
+        "bm4DNAHMbs": 0.14317899385564856,
+        "KMPSearch": 4.563204748516142,
+        "AhoCorasickSearch": 9.673065941239647
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V047",
+      "seed": 3224240174,
+      "alphabet": "Text",
+      "n": 537017,
+      "m": 63,
+      "k": 7,
+      "shape": {
+        "n": 537017,
+        "sigma": 56,
+        "k": 7,
+        "min": 63,
+        "max": 63,
+        "mean": 63
+      },
+      "hits": 4,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            12.016200000000026,
+            12.302499999999782,
+            11.906399999999849
+          ],
+          "medianMs": 12.016200000000026,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            10.362299999999777,
+            9.851299999999355,
+            10.323099999999613
+          ],
+          "medianMs": 10.323099999999613,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            1.5652000000000044,
+            1.631199999999808,
+            1.5413999999991574
+          ],
+          "medianMs": 1.5652000000000044,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.28892500000006294,
+            0.2750499999999647,
+            0.2878000000000611
+          ],
+          "medianMs": 0.2878000000000611,
+          "batch": 4
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.9553401542766906,
+        "bm4DNAHMbs": 0.31977780636314557,
+        "KMPSearch": 14.137033114717127,
+        "AhoCorasickSearch": 8.602649853765655
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1
+    },
+    {
+      "id": "V048",
+      "seed": 3224305711,
+      "alphabet": "Binary",
+      "n": 209384,
+      "m": 6,
+      "k": 13,
+      "shape": {
+        "n": 209384,
+        "sigma": 2,
+        "k": 13,
+        "min": 6,
+        "max": 6,
+        "mean": 6
+      },
+      "hits": 42676,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            6.946100000000115,
+            6.977799999999661,
+            6.583999999999833
+          ],
+          "medianMs": 6.946100000000115,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            26.28560000000016,
+            25.909999999999854,
+            27.35649999999987
+          ],
+          "medianMs": 26.28560000000016,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            13.837199999999939,
+            13.260800000000017,
+            15.205199999999422
+          ],
+          "medianMs": 13.837199999999939,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            28.376900000000205,
+            28.993400000000292,
+            30.162999999999556
+          ],
+          "medianMs": 28.993400000000292,
+          "batch": 1
+        }
+      },
+      "winner": "AhoCorasickSearch",
+      "selected": "AhoCorasickSearch",
+      "estimates": {
+        "bm4DNADS": 19.31700687305121,
+        "bm4DNAHMbs": 3.462179026247572,
+        "KMPSearch": 10.22692205676257,
+        "AhoCorasickSearch": 3.342636571396385
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V049",
+      "seed": 3224371248,
+      "alphabet": "DNA",
+      "n": 45939,
+      "m": 36,
+      "k": 3,
+      "shape": {
+        "n": 45939,
+        "sigma": 4,
+        "k": 3,
+        "min": 36,
+        "max": 36,
+        "mean": 36
+      },
+      "hits": 2,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            0.6499000000003434,
+            0.6397999999999229,
+            0.6507500000002437
+          ],
+          "medianMs": 0.6499000000003434,
+          "batch": 2
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.05129374999995662,
+            0.05313749999999118,
+            0.05107500000002574
+          ],
+          "medianMs": 0.05129374999995662,
+          "batch": 16
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            1.0946999999996478,
+            1.089100000000144,
+            1.1105999999999767
+          ],
+          "medianMs": 1.0946999999996478,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            0.8895000000002256,
+            0.7950000000000728,
+            0.7875000000003638
+          ],
+          "medianMs": 0.7950000000000728,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.48964616160371455,
+        "bm4DNAHMbs": 0.04912782926185059,
+        "KMPSearch": 0.5220049918349902,
+        "AhoCorasickSearch": 0.7445543095308182
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V050",
+      "seed": 3224436785,
+      "alphabet": "Protein",
+      "n": 63821,
+      "m": 51,
+      "k": 6,
+      "shape": {
+        "n": 63821,
+        "sigma": 20,
+        "k": 6,
+        "min": 51,
+        "max": 51,
+        "mean": 51
+      },
+      "hits": 3,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.04845714285714903,
+            0.050752380952352336,
+            0.05268095238097019
+          ],
+          "medianMs": 0.050752380952352336,
+          "batch": 21
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            1.4442999999992026,
+            1.4058999999997468,
+            1.6556999999993423
+          ],
+          "medianMs": 1.4442999999992026,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.0498999999999796,
+            1.1131999999997788,
+            0.9924000000000888
+          ],
+          "medianMs": 1.0498999999999796,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.3686250000000655,
+            0.2862750000001597,
+            0.2931499999999687
+          ],
+          "medianMs": 0.2931499999999687,
+          "batch": 4
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.2735523210656231,
+        "bm4DNAHMbs": 0.05006366010401234,
+        "KMPSearch": 1.4506357774919645,
+        "AhoCorasickSearch": 1.053556377509501
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1
+    },
+    {
+      "id": "V051",
+      "seed": 3224502322,
+      "alphabet": "Text",
+      "n": 43486,
+      "m": 13,
+      "k": 29,
+      "shape": {
+        "n": 43486,
+        "sigma": 56,
+        "k": 29,
+        "min": 13,
+        "max": 13,
+        "mean": 13
+      },
+      "hits": 15,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            4.062399999999798,
+            4.2422999999998865,
+            3.95049999999992
+          ],
+          "medianMs": 4.062399999999798,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.0052999999998065,
+            0.9891000000006898,
+            1.0293000000001484
+          ],
+          "medianMs": 1.0052999999998065,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            1.4890000000004875,
+            1.5646000000006097,
+            1.5250999999998385
+          ],
+          "medianMs": 1.5250999999998385,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.5054000000000087,
+            0.5027999999997519,
+            0.4989999999997963
+          ],
+          "medianMs": 0.5027999999997519,
+          "batch": 2
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 1.3790484064048227,
+        "bm4DNAHMbs": 0.5840185153733837,
+        "KMPSearch": 4.751894349204558,
+        "AhoCorasickSearch": 0.7385888330415565
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V052",
+      "seed": 3224567859,
+      "alphabet": "Binary",
+      "n": 32409,
+      "m": 21,
+      "k": 3,
+      "shape": {
+        "n": 32409,
+        "sigma": 2,
+        "k": 3,
+        "min": 21,
+        "max": 21,
+        "mean": 21
+      },
+      "hits": 2,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            0.5843999999997322,
+            0.5386499999999614,
+            0.5439000000001215
+          ],
+          "medianMs": 0.5439000000001215,
+          "batch": 2
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            1.0263499999996384,
+            0.9650499999997919,
+            0.9411999999997533
+          ],
+          "medianMs": 0.9650499999997919,
+          "batch": 2
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.2928750000000946,
+            0.3061249999998381,
+            0.311725000000024
+          ],
+          "medianMs": 0.3061249999998381,
+          "batch": 4
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            1.0505000000002838,
+            1.0416000000004715,
+            1.078099999999722
+          ],
+          "medianMs": 1.0505000000002838,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.6903415025703332,
+        "bm4DNAHMbs": 0.12834689900273535,
+        "KMPSearch": 0.3677302720168264,
+        "AhoCorasickSearch": 0.5236450860074554
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V053",
+      "seed": 3224633396,
+      "alphabet": "DNA",
+      "n": 590074,
+      "m": 43,
+      "k": 5,
+      "shape": {
+        "n": 590074,
+        "sigma": 4,
+        "k": 5,
+        "min": 43,
+        "max": 43,
+        "mean": 43
+      },
+      "hits": 3,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            11.116899999999987,
+            11.081000000000131,
+            11.236399999999776
+          ],
+          "medianMs": 11.116899999999987,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            1.2478000000000975,
+            1.2430999999996857,
+            1.2372999999997774
+          ],
+          "medianMs": 1.2430999999996857,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            22.293099999999868,
+            22.246799999999894,
+            21.82549999999992
+          ],
+          "medianMs": 22.246799999999894,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            14.36489999999958,
+            14.503199999999197,
+            14.517299999999523
+          ],
+          "medianMs": 14.503199999999197,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 10.469883685826249,
+        "bm4DNAHMbs": 0.9411719566996667,
+        "KMPSearch": 11.090245418840881,
+        "AhoCorasickSearch": 9.419434819172398
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V054",
+      "seed": 3224698933,
+      "alphabet": "Protein",
+      "n": 785995,
+      "m": 56,
+      "k": 16,
+      "shape": {
+        "n": 785995,
+        "sigma": 20,
+        "k": 16,
+        "min": 56,
+        "max": 56,
+        "mean": 56
+      },
+      "hits": 8,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            1.2296999999998661,
+            1.4881999999997788,
+            1.204399999999623
+          ],
+          "medianMs": 1.2296999999998661,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            47.09720000000016,
+            47.48570000000018,
+            47.367599999999584
+          ],
+          "medianMs": 47.367599999999584,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            20.397299999999632,
+            19.713000000000648,
+            19.796699999999873
+          ],
+          "medianMs": 19.796699999999873,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            9.55580000000009,
+            9.352199999999357,
+            9.677599999999984
+          ],
+          "medianMs": 9.55580000000009,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 8.929768482322725,
+        "bm4DNAHMbs": 1.1858411766186066,
+        "KMPSearch": 47.27122422857803,
+        "AhoCorasickSearch": 12.62192111120672
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1
+    },
+    {
+      "id": "V055",
+      "seed": 3224764470,
+      "alphabet": "Text",
+      "n": 165863,
+      "m": 14,
+      "k": 2,
+      "shape": {
+        "n": 165863,
+        "sigma": 56,
+        "k": 2,
+        "min": 14,
+        "max": 14,
+        "mean": 14
+      },
+      "hits": 1,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            1.0302000000001499,
+            1.074999999999818,
+            1.0385999999998603
+          ],
+          "medianMs": 1.0385999999998603,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.467000000000553,
+            1.4025999999994383,
+            1.3796000000002095
+          ],
+          "medianMs": 1.4025999999994383,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.39496666666673264,
+            0.3995333333335414,
+            0.3864999999999175
+          ],
+          "medianMs": 0.39496666666673264,
+          "batch": 3
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.1096625000000131,
+            0.11703750000003765,
+            0.10924999999997453
+          ],
+          "medianMs": 0.1096625000000131,
+          "batch": 8
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.3364634589458465,
+        "bm4DNAHMbs": 0.13259834264568104,
+        "KMPSearch": 1.2470907488906708,
+        "AhoCorasickSearch": 2.6437057510837465
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V056",
+      "seed": 3224830007,
+      "alphabet": "Binary",
+      "n": 310083,
+      "m": 23,
+      "k": 5,
+      "shape": {
+        "n": 310083,
+        "sigma": 2,
+        "k": 5,
+        "min": 23,
+        "max": 23,
+        "mean": 23
+      },
+      "hits": 3,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            5.634200000000419,
+            5.689000000000306,
+            5.699300000000221
+          ],
+          "medianMs": 5.689000000000306,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            17.193100000000413,
+            17.614800000000287,
+            17.44260000000031
+          ],
+          "medianMs": 17.44260000000031,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            5.1414999999997235,
+            5.207300000000032,
+            5.113800000000083
+          ],
+          "medianMs": 5.1414999999997235,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            17.455200000000332,
+            16.290600000000268,
+            16.07549999999992
+          ],
+          "medianMs": 16.290600000000268,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 11.003159962957433,
+        "bm4DNAHMbs": 1.9678026220949054,
+        "KMPSearch": 5.8279888694223425,
+        "AhoCorasickSearch": 4.950146994348752
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V057",
+      "seed": 3224895544,
+      "alphabet": "DNA",
+      "n": 73371,
+      "m": 70,
+      "k": 17,
+      "shape": {
+        "n": 73371,
+        "sigma": 4,
+        "k": 17,
+        "min": 70,
+        "max": 70,
+        "mean": 70
+      },
+      "hits": 9,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            6.525800000000345,
+            6.534099999999853,
+            6.511300000000119
+          ],
+          "medianMs": 6.525800000000345,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.47643333333326154,
+            0.4901999999998831,
+            0.5040333333333061
+          ],
+          "medianMs": 0.4901999999998831,
+          "batch": 3
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            9.492800000000898,
+            9.701900000000023,
+            9.875700000000506
+          ],
+          "medianMs": 9.701900000000023,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            2.039600000000064,
+            2.0398000000004686,
+            2.0971000000008644
+          ],
+          "medianMs": 2.0398000000004686,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 4.432779286060815,
+        "bm4DNAHMbs": 0.42668799440494914,
+        "KMPSearch": 4.732976952513569,
+        "AhoCorasickSearch": 1.3142926423446635
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1
+    },
+    {
+      "id": "V058",
+      "seed": 3224961081,
+      "alphabet": "Protein",
+      "n": 92832,
+      "m": 10,
+      "k": 2,
+      "shape": {
+        "n": 92832,
+        "sigma": 20,
+        "k": 2,
+        "min": 10,
+        "max": 10,
+        "mean": 10
+      },
+      "hits": 1,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.09040000000004511,
+            0.09427272727275109,
+            0.09631818181812625
+          ],
+          "medianMs": 0.09427272727275109,
+          "batch": 11
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            0.6513999999997395,
+            0.6124500000000808,
+            0.6828500000001441
+          ],
+          "medianMs": 0.6513999999997395,
+          "batch": 2
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.3278000000000247,
+            1.399000000000342,
+            1.431300000000192
+          ],
+          "medianMs": 1.399000000000342,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.31645000000003165,
+            0.30214999999998327,
+            0.29874999999992724
+          ],
+          "medianMs": 0.30214999999998327,
+          "batch": 4
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.26363024356178416,
+        "bm4DNAHMbs": 0.10788471093972989,
+        "KMPSearch": 0.6981602459563777,
+        "AhoCorasickSearch": 1.4801902113299656
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V059",
+      "seed": 3225026618,
+      "alphabet": "Text",
+      "n": 78155,
+      "m": 30,
+      "k": 5,
+      "shape": {
+        "n": 78155,
+        "sigma": 56,
+        "k": 5,
+        "min": 30,
+        "max": 30,
+        "mean": 30
+      },
+      "hits": 3,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            1.2451000000000931,
+            1.238600000000588,
+            1.2559000000001106
+          ],
+          "medianMs": 1.2451000000000931,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.2174000000004526,
+            1.2294000000001688,
+            1.21349999999984
+          ],
+          "medianMs": 1.2174000000004526,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.2524999999998272,
+            0.2833499999999276,
+            0.2412249999999858
+          ],
+          "medianMs": 0.2524999999998272,
+          "batch": 4
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.06806666666670935,
+            0.0671666666667079,
+            0.06709166666663198
+          ],
+          "medianMs": 0.0671666666667079,
+          "batch": 12
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.18576217181461624,
+        "bm4DNAHMbs": 0.07737544026818205,
+        "KMPSearch": 1.4738100566235313,
+        "AhoCorasickSearch": 1.2625445329286058
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V060",
+      "seed": 3225092155,
+      "alphabet": "Binary",
+      "n": 91443,
+      "m": 34,
+      "k": 30,
+      "shape": {
+        "n": 91443,
+        "sigma": 2,
+        "k": 30,
+        "min": 34,
+        "max": 34,
+        "mean": 34
+      },
+      "hits": 15,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.937300000000505,
+            1.9522999999999229,
+            1.944100000000617
+          ],
+          "medianMs": 1.944100000000617,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            24.3738000000003,
+            24.766499999999724,
+            23.701199999999517
+          ],
+          "medianMs": 24.3738000000003,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            9.096000000001368,
+            9.105999999999767,
+            9.253399999999601
+          ],
+          "medianMs": 9.105999999999767,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            28.820400000000518,
+            28.67449999999917,
+            28.618500000000495
+          ],
+          "medianMs": 28.67449999999917,
+          "batch": 1
+        }
+      },
+      "winner": "AhoCorasickSearch",
+      "selected": "AhoCorasickSearch",
+      "estimates": {
+        "bm4DNADS": 19.473719167396514,
+        "bm4DNAHMbs": 3.5214164439895015,
+        "KMPSearch": 10.34499845807349,
+        "AhoCorasickSearch": 1.5810617719509985
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V061",
+      "seed": 3225157692,
+      "alphabet": "DNA",
+      "n": 706157,
+      "m": 76,
+      "k": 2,
+      "shape": {
+        "n": 706157,
+        "sigma": 4,
+        "k": 2,
+        "min": 76,
+        "max": 76,
+        "mean": 76
+      },
+      "hits": 1,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            7.829800000001342,
+            7.736799999998766,
+            7.677900000000591
+          ],
+          "medianMs": 7.736799999998766,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.5059000000001106,
+            0.5172000000002299,
+            0.5142500000001746
+          ],
+          "medianMs": 0.5142500000001746,
+          "batch": 2
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            10.84519999999975,
+            10.913199999999051,
+            11.744000000000597
+          ],
+          "medianMs": 10.913199999999051,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            14.014900000000125,
+            13.843800000000556,
+            13.878300000000309
+          ],
+          "medianMs": 13.878300000000309,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 5.012123835082872,
+        "bm4DNAHMbs": 0.4499066301112754,
+        "KMPSearch": 5.310778959440259,
+        "AhoCorasickSearch": 11.259534644742534
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1
+    },
+    {
+      "id": "V062",
+      "seed": 3225223229,
+      "alphabet": "Protein",
+      "n": 248054,
+      "m": 8,
+      "k": 5,
+      "shape": {
+        "n": 248054,
+        "sigma": 20,
+        "k": 5,
+        "min": 8,
+        "max": 8,
+        "mean": 8
+      },
+      "hits": 3,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.7540999999991982,
+            0.8067499999997381,
+            0.7569000000003143
+          ],
+          "medianMs": 0.7569000000003143,
+          "batch": 2
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            4.111699999999473,
+            4.262000000000626,
+            4.193199999999706
+          ],
+          "medianMs": 4.193199999999706,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            4.460499999999229,
+            4.52770000000055,
+            4.5649000000012165
+          ],
+          "medianMs": 4.52770000000055,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            2.8531999999995605,
+            2.8432000000011612,
+            2.8193000000010215
+          ],
+          "medianMs": 2.8432000000011612,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 2.200622546117325,
+        "bm4DNAHMbs": 0.9043973276863444,
+        "KMPSearch": 4.660056067846924,
+        "AhoCorasickSearch": 3.9535251377511544
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V063",
+      "seed": 3225288766,
+      "alphabet": "Text",
+      "n": 740441,
+      "m": 30,
+      "k": 23,
+      "shape": {
+        "n": 740441,
+        "sigma": 56,
+        "k": 23,
+        "min": 30,
+        "max": 30,
+        "mean": 30
+      },
+      "hits": 12,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            55.3846999999987,
+            55.273299999998926,
+            55.68630000000121
+          ],
+          "medianMs": 55.3846999999987,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            16.227899999999863,
+            16.47069999999985,
+            16.233099999999467
+          ],
+          "medianMs": 16.233099999999467,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            11.59230000000025,
+            11.426000000001295,
+            11.49829999999929
+          ],
+          "medianMs": 11.49829999999929,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            3.0221999999994296,
+            3.401400000000649,
+            3.0113000000001193
+          ],
+          "medianMs": 3.0221999999994296,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 8.061012266975485,
+        "bm4DNAHMbs": 3.0100952795845273,
+        "KMPSearch": 63.992903829733095,
+        "AhoCorasickSearch": 11.871443111293184
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V064",
+      "seed": 3225354303,
+      "alphabet": "Binary",
+      "n": 355959,
+      "m": 47,
+      "k": 2,
+      "shape": {
+        "n": 355959,
+        "sigma": 2,
+        "k": 2,
+        "min": 47,
+        "max": 47,
+        "mean": 47
+      },
+      "hits": 1,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            6.559499999999389,
+            6.6239000000005035,
+            6.627800000000207
+          ],
+          "medianMs": 6.6239000000005035,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            6.590799999999945,
+            6.86659999999938,
+            6.651700000000346
+          ],
+          "medianMs": 6.651700000000346,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            2.632499999999709,
+            2.5389999999988504,
+            2.400900000000547
+          ],
+          "medianMs": 2.5389999999988504,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            7.617499999998472,
+            8.20260000000053,
+            7.408899999998539
+          ],
+          "medianMs": 7.617499999998472,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 5.052663572858487,
+        "bm4DNAHMbs": 0.9031123362736005,
+        "KMPSearch": 2.6777553951407027,
+        "AhoCorasickSearch": 5.677833755068744
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V065",
+      "seed": 3225419840,
+      "alphabet": "DNA",
+      "n": 18977,
+      "m": 5,
+      "k": 5,
+      "shape": {
+        "n": 18977,
+        "sigma": 4,
+        "k": 5,
+        "min": 5,
+        "max": 5,
+        "mean": 5
+      },
+      "hits": 87,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            0.4942000000000917,
+            0.49500000000080036,
+            0.4856499999996231
+          ],
+          "medianMs": 0.4942000000000917,
+          "batch": 2
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.15727142857161067,
+            0.15888571428591344,
+            0.1655142857143801
+          ],
+          "medianMs": 0.15888571428591344,
+          "batch": 7
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            0.6828500000001441,
+            0.6546499999994921,
+            0.6433500000002823
+          ],
+          "medianMs": 0.6546499999994921,
+          "batch": 2
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            0.44280000000071595,
+            0.44279999999980646,
+            0.4447500000005675
+          ],
+          "medianMs": 0.44280000000071595,
+          "batch": 2
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.3368223350414964,
+        "bm4DNAHMbs": 0.1289299387611467,
+        "KMPSearch": 0.3573975572730921,
+        "AhoCorasickSearch": 0.3051567338547257
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V066",
+      "seed": 3225485377,
+      "alphabet": "Protein",
+      "n": 28111,
+      "m": 21,
+      "k": 28,
+      "shape": {
+        "n": 28111,
+        "sigma": 20,
+        "k": 28,
+        "min": 21,
+        "max": 21,
+        "mean": 21
+      },
+      "hits": 14,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.21758000000008906,
+            0.22551999999996042,
+            0.2501400000001013
+          ],
+          "medianMs": 0.22551999999996042,
+          "batch": 5
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            2.907100000000355,
+            3.1080000000001746,
+            2.9298999999991793
+          ],
+          "medianMs": 2.9298999999991793,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            0.7514999999993961,
+            0.770050000000083,
+            0.7862999999997555
+          ],
+          "medianMs": 0.770050000000083,
+          "batch": 2
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            1.0267999999996391,
+            1.0840000000007421,
+            1.0974999999998545
+          ],
+          "medianMs": 1.0840000000007421,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.5620469559736853,
+        "bm4DNAHMbs": 0.25042032977248735,
+        "KMPSearch": 2.9801386062211286,
+        "AhoCorasickSearch": 0.5197937111020554
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V067",
+      "seed": 3225550914,
+      "alphabet": "Text",
+      "n": 93125,
+      "m": 33,
+      "k": 2,
+      "shape": {
+        "n": 93125,
+        "sigma": 56,
+        "k": 2,
+        "min": 33,
+        "max": 33,
+        "mean": 33
+      },
+      "hits": 1,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            0.5936499999997977,
+            0.5785999999998239,
+            0.669650000000729
+          ],
+          "medianMs": 0.5936499999997977,
+          "batch": 2
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.2506000000012136,
+            1.2644000000000233,
+            1.229799999999159
+          ],
+          "medianMs": 1.2506000000012136,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.09291111111108169,
+            0.07891111111126116,
+            0.07617777777785603
+          ],
+          "medianMs": 0.07891111111126116,
+          "batch": 9
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.03388148148143147,
+            0.03157777777778392,
+            0.033544444444420084
+          ],
+          "medianMs": 0.033544444444420084,
+          "batch": 27
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.08049450485801626,
+        "bm4DNAHMbs": 0.03313513582244336,
+        "KMPSearch": 0.7022208547566701,
+        "AhoCorasickSearch": 1.4905114601941507
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V068",
+      "seed": 3225616451,
+      "alphabet": "Binary",
+      "n": 71293,
+      "m": 68,
+      "k": 7,
+      "shape": {
+        "n": 71293,
+        "sigma": 2,
+        "k": 7,
+        "min": 68,
+        "max": 68,
+        "mean": 68
+      },
+      "hits": 4,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.3562999999994645,
+            1.4512999999988097,
+            1.430000000000291
+          ],
+          "medianMs": 1.430000000000291,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            4.716199999998935,
+            4.928799999999683,
+            4.8422000000009575
+          ],
+          "medianMs": 4.8422000000009575,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            1.641300000001138,
+            1.6587000000017724,
+            1.6352000000006228
+          ],
+          "medianMs": 1.641300000001138,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            5.3202000000001135,
+            5.330299999999625,
+            5.407599999998638
+          ],
+          "medianMs": 5.330299999999625,
+          "batch": 1
+        }
+      },
+      "winner": "AhoCorasickSearch",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 3.544317828367548,
+        "bm4DNAHMbs": 0.6439002434676292,
+        "KMPSearch": 1.8936722986450802,
+        "AhoCorasickSearch": 1.1934051129823486
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1.1477622377627998
+    },
+    {
+      "id": "V069",
+      "seed": 3225681988,
+      "alphabet": "DNA",
+      "n": 388434,
+      "m": 6,
+      "k": 27,
+      "shape": {
+        "n": 388434,
+        "sigma": 4,
+        "k": 27,
+        "min": 6,
+        "max": 6,
+        "mean": 6
+      },
+      "hits": 2573,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            57.6226000000006,
+            58.0599000000002,
+            58.79159999999865
+          ],
+          "medianMs": 58.0599000000002,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            15.600699999999051,
+            14.440800000000309,
+            14.343699999999444
+          ],
+          "medianMs": 14.440800000000309,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            73.70389999999861,
+            73.50990000000093,
+            73.43549999999959
+          ],
+          "medianMs": 73.50990000000093,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            11.319999999999709,
+            11.364600000000792,
+            11.533699999999953
+          ],
+          "medianMs": 11.364600000000792,
+          "batch": 1
+        }
+      },
+      "winner": "AhoCorasickSearch",
+      "selected": "AhoCorasickSearch",
+      "estimates": {
+        "bm4DNADS": 37.2138673691793,
+        "bm4DNAHMbs": 10.647979969238348,
+        "KMPSearch": 39.398290185748856,
+        "AhoCorasickSearch": 6.2031443615855455
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V070",
+      "seed": 3225747525,
+      "alphabet": "Protein",
+      "n": 854572,
+      "m": 21,
+      "k": 2,
+      "shape": {
+        "n": 854572,
+        "sigma": 20,
+        "k": 2,
+        "min": 21,
+        "max": 21,
+        "mean": 21
+      },
+      "hits": 1,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.5073999999995067,
+            0.5980500000005122,
+            0.37525000000005093
+          ],
+          "medianMs": 0.5073999999995067,
+          "batch": 2
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            6.4702999999990425,
+            6.628099999999904,
+            6.637699999999313
+          ],
+          "medianMs": 6.628099999999904,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            11.23609999999826,
+            11.08009999999922,
+            11.074800000000323
+          ],
+          "medianMs": 11.08009999999922,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            2.136900000001333,
+            2.1008999999994558,
+            2.122300000000905
+          ],
+          "medianMs": 2.122300000000905,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 1.2131380153953448,
+        "bm4DNAHMbs": 0.4355015054960504,
+        "KMPSearch": 6.421221957259238,
+        "AhoCorasickSearch": 13.608525811209258
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V071",
+      "seed": 3225813062,
+      "alphabet": "Text",
+      "n": 990079,
+      "m": 41,
+      "k": 9,
+      "shape": {
+        "n": 990079,
+        "sigma": 56,
+        "k": 9,
+        "min": 41,
+        "max": 41,
+        "mean": 41
+      },
+      "hits": 5,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            29.08979999999974,
+            29.623900000000503,
+            29.215899999999237
+          ],
+          "medianMs": 29.215899999999237,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            20.72060000000056,
+            20.126900000001115,
+            19.595799999999144
+          ],
+          "medianMs": 20.126900000001115,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            5.341000000000349,
+            5.089500000000044,
+            5.153500000000349
+          ],
+          "medianMs": 5.153500000000349,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            1.2874000000001615,
+            1.0196500000001834,
+            0.9897999999993772
+          ],
+          "medianMs": 1.0196500000001834,
+          "batch": 2
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 3.086798559495955,
+        "bm4DNAHMbs": 1.14254391834687,
+        "KMPSearch": 33.48343928751134,
+        "AhoCorasickSearch": 15.80578633993264
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V072",
+      "seed": 3225878599,
+      "alphabet": "Binary",
+      "n": 615291,
+      "m": 94,
+      "k": 27,
+      "shape": {
+        "n": 615291,
+        "sigma": 2,
+        "k": 27,
+        "min": 94,
+        "max": 94,
+        "mean": 94
+      },
+      "hits": 14,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            11.830299999999625,
+            12.3791999999994,
+            12.331099999999424
+          ],
+          "medianMs": 12.331099999999424,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            149.16280000000006,
+            149.4364000000005,
+            151.0536000000011
+          ],
+          "medianMs": 149.4364000000005,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            53.0025999999998,
+            53.03560000000107,
+            53.416299999998955
+          ],
+          "medianMs": 53.03560000000107,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            175.69700000000012,
+            179.9964,
+            175.40700000000106
+          ],
+          "medianMs": 175.69700000000012,
+          "batch": 1
+        }
+      },
+      "winner": "AhoCorasickSearch",
+      "selected": "AhoCorasickSearch",
+      "estimates": {
+        "bm4DNADS": 117.90771957899238,
+        "bm4DNAHMbs": 21.039559686730772,
+        "KMPSearch": 62.500290098592494,
+        "AhoCorasickSearch": 10.106534862348404
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1
+    },
+    {
+      "id": "V073",
+      "seed": 3225944136,
+      "alphabet": "DNA",
+      "n": 66610,
+      "m": 27,
+      "k": 2,
+      "shape": {
+        "n": 66610,
+        "sigma": 4,
+        "k": 2,
+        "min": 27,
+        "max": 27,
+        "mean": 27
+      },
+      "hits": 1,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            0.7028500000005806,
+            0.6952500000006694,
+            0.6907000000001062
+          ],
+          "medianMs": 0.6952500000006694,
+          "batch": 2
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.060092857142860466,
+            0.06095000000004802,
+            0.07432857142859055
+          ],
+          "medianMs": 0.06095000000004802,
+          "batch": 14
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            1.1797000000005937,
+            1.0400000000008731,
+            1.0501000000003842
+          ],
+          "medianMs": 1.0501000000003842,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.2528000000002066,
+            1.2731000000003405,
+            1.2427999999999884
+          ],
+          "medianMs": 1.2528000000002066,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.4730155255128138,
+        "bm4DNAHMbs": 0.045776603177704614,
+        "KMPSearch": 0.5025557071694431,
+        "AhoCorasickSearch": 1.066961109548844
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V074",
+      "seed": 3226009673,
+      "alphabet": "Protein",
+      "n": 37526,
+      "m": 40,
+      "k": 7,
+      "shape": {
+        "n": 37526,
+        "sigma": 20,
+        "k": 7,
+        "min": 40,
+        "max": 40,
+        "mean": 40
+      },
+      "hits": 4,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.04307272727270505,
+            0.0527318181818621,
+            0.048240909090964124
+          ],
+          "medianMs": 0.048240909090964124,
+          "batch": 22
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            1.1391999999996187,
+            0.9951999999993859,
+            0.9889000000002852
+          ],
+          "medianMs": 0.9951999999993859,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            0.9155499999997119,
+            0.8612000000002809,
+            0.8145000000004075
+          ],
+          "medianMs": 0.8612000000002809,
+          "batch": 2
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.21630000000004657,
+            0.20589999999974679,
+            0.2083200000000943
+          ],
+          "medianMs": 0.2083200000000943,
+          "batch": 5
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.18806769813921312,
+        "bm4DNAHMbs": 0.04715774041928541,
+        "KMPSearch": 0.9979496987828114,
+        "AhoCorasickSearch": 0.631786310112317
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V075",
+      "seed": 3226075210,
+      "alphabet": "Text",
+      "n": 70301,
+      "m": 59,
+      "k": 23,
+      "shape": {
+        "n": 70301,
+        "sigma": 56,
+        "k": 23,
+        "min": 59,
+        "max": 59,
+        "mean": 59
+      },
+      "hits": 12,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            5.234000000000378,
+            5.090100000001257,
+            5.097999999999956
+          ],
+          "medianMs": 5.097999999999956,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.5949999999993452,
+            1.7036000000007334,
+            1.639100000000326
+          ],
+          "medianMs": 1.639100000000326,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.7734000000000378,
+            0.7639499999995678,
+            0.7604999999994106
+          ],
+          "medianMs": 0.7639499999995678,
+          "batch": 2
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.16802000000025147,
+            0.17573999999985973,
+            0.1861799999998766
+          ],
+          "medianMs": 0.17573999999985973,
+          "batch": 5
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.4178280257290862,
+        "bm4DNAHMbs": 0.18475802945662223,
+        "KMPSearch": 6.128001306120853,
+        "AhoCorasickSearch": 1.2859613786105726
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1
+    },
+    {
+      "id": "V076",
+      "seed": 3226140747,
+      "alphabet": "Binary",
+      "n": 60602,
+      "m": 8,
+      "k": 3,
+      "shape": {
+        "n": 60602,
+        "sigma": 2,
+        "k": 3,
+        "min": 8,
+        "max": 8,
+        "mean": 8
+      },
+      "hits": 722,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.1661000000003696,
+            1.4426999999996042,
+            1.1734999999989668
+          ],
+          "medianMs": 1.1734999999989668,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            1.7308999999986554,
+            1.8380999999990308,
+            1.7374999999992724
+          ],
+          "medianMs": 1.7374999999992724,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.5916499999993903,
+            0.6279999999997017,
+            0.6438499999994747
+          ],
+          "medianMs": 0.6279999999997017,
+          "batch": 2
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            1.7545999999983906,
+            1.717000000000553,
+            1.764500000001135
+          ],
+          "medianMs": 1.7545999999983906,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 1.290323508400792,
+        "bm4DNAHMbs": 0.23512352317438134,
+        "KMPSearch": 0.6838313492548292,
+        "AhoCorasickSearch": 0.967634308962848
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V077",
+      "seed": 3226206284,
+      "alphabet": "DNA",
+      "n": 316612,
+      "m": 31,
+      "k": 9,
+      "shape": {
+        "n": 316612,
+        "sigma": 4,
+        "k": 9,
+        "min": 31,
+        "max": 31,
+        "mean": 31
+      },
+      "hits": 5,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            12.912899999999354,
+            12.753899999999703,
+            13.299699999999575
+          ],
+          "medianMs": 12.912899999999354,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            1.233299999999872,
+            1.1911000000000058,
+            1.1912000000011176
+          ],
+          "medianMs": 1.1912000000011176,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            22.120199999999386,
+            21.84610000000066,
+            21.695999999999913
+          ],
+          "medianMs": 21.84610000000066,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            7.45969999999943,
+            7.5371999999988475,
+            7.910600000001068
+          ],
+          "medianMs": 7.5371999999988475,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 10.112379941078203,
+        "bm4DNAHMbs": 0.9166480738986709,
+        "KMPSearch": 10.7139962439238,
+        "AhoCorasickSearch": 5.07424685028338
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V078",
+      "seed": 3226271821,
+      "alphabet": "Protein",
+      "n": 506520,
+      "m": 37,
+      "k": 21,
+      "shape": {
+        "n": 506520,
+        "sigma": 20,
+        "k": 21,
+        "min": 37,
+        "max": 37,
+        "mean": 37
+      },
+      "hits": 11,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            1.421700000000783,
+            1.3704000000016094,
+            1.3155000000006112
+          ],
+          "medianMs": 1.3704000000016094,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            40.48619999999937,
+            40.88920000000144,
+            40.756900000000314
+          ],
+          "medianMs": 40.756900000000314,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            12.023800000000847,
+            12.13590000000113,
+            12.360800000000381
+          ],
+          "medianMs": 12.13590000000113,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            9.187700000000405,
+            9.092800000000352,
+            9.239600000000792
+          ],
+          "medianMs": 9.187700000000405,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 7.55305832627054,
+        "bm4DNAHMbs": 1.5322816294479549,
+        "KMPSearch": 39.983553124359005,
+        "AhoCorasickSearch": 8.158510485199155
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V079",
+      "seed": 3226337358,
+      "alphabet": "Text",
+      "n": 763938,
+      "m": 70,
+      "k": 3,
+      "shape": {
+        "n": 763938,
+        "sigma": 56,
+        "k": 3,
+        "min": 70,
+        "max": 70,
+        "mean": 70
+      },
+      "hits": 2,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            7.618999999998778,
+            7.962700000000041,
+            7.6657000000013795
+          ],
+          "medianMs": 7.6657000000013795,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            11.082900000001246,
+            11.088200000000143,
+            11.145599999999831
+          ],
+          "medianMs": 11.088200000000143,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            1.1075000000000728,
+            1.039600000000064,
+            0.9214000000010856
+          ],
+          "medianMs": 1.039600000000064,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.22839999999996508,
+            0.2612999999998595,
+            0.2272857142857642
+          ],
+          "medianMs": 0.22839999999996508,
+          "batch": 7
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.5820920217076849,
+        "bm4DNAHMbs": 0.17361814825026928,
+        "KMPSearch": 8.616514967829424,
+        "AhoCorasickSearch": 12.18644473215907
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1
+    },
+    {
+      "id": "V080",
+      "seed": 3226402895,
+      "alphabet": "Binary",
+      "n": 403267,
+      "m": 6,
+      "k": 8,
+      "shape": {
+        "n": 403267,
+        "sigma": 2,
+        "k": 8,
+        "min": 6,
+        "max": 6,
+        "mean": 6
+      },
+      "hits": 50283,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            9.908799999999246,
+            9.686400000000503,
+            9.671700000000783
+          ],
+          "medianMs": 9.686400000000503,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            25.006900000000314,
+            25.877700000000914,
+            27.31130000000121
+          ],
+          "medianMs": 25.877700000000914,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            15.321300000001429,
+            17.45889999999963,
+            15.132300000001123
+          ],
+          "medianMs": 15.321300000001429,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            33.062699999998586,
+            34.667199999999866,
+            32.6854000000003
+          ],
+          "medianMs": 33.062699999998586,
+          "batch": 1
+        }
+      },
+      "winner": "AhoCorasickSearch",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 22.894474236001454,
+        "bm4DNAHMbs": 4.0899701774639245,
+        "KMPSearch": 12.119268002160972,
+        "AhoCorasickSearch": 6.42524101370668
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1.5817331516353477
+    },
+    {
+      "id": "V081",
+      "seed": 3226468432,
+      "alphabet": "DNA",
+      "n": 44935,
+      "m": 45,
+      "k": 30,
+      "shape": {
+        "n": 44935,
+        "sigma": 4,
+        "k": 30,
+        "min": 45,
+        "max": 45,
+        "mean": 45
+      },
+      "hits": 15,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            6.445499999999811,
+            6.07589999999982,
+            6.289699999999357
+          ],
+          "medianMs": 6.289699999999357,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.5783000000001266,
+            0.6132500000003347,
+            0.606499999999869
+          ],
+          "medianMs": 0.606499999999869,
+          "batch": 2
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            10.379400000001624,
+            10.495999999999185,
+            10.245199999999386
+          ],
+          "medianMs": 10.379400000001624,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.2893000000003667,
+            1.26759999999922,
+            1.2692999999999302
+          ],
+          "medianMs": 1.2692999999999302,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 4.791185669875486,
+        "bm4DNAHMbs": 0.4822416750888144,
+        "KMPSearch": 5.117834608029149,
+        "AhoCorasickSearch": 0.8813161017114091
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V082",
+      "seed": 3226533969,
+      "alphabet": "Protein",
+      "n": 22663,
+      "m": 61,
+      "k": 3,
+      "shape": {
+        "n": 22663,
+        "sigma": 20,
+        "k": 3,
+        "min": 61,
+        "max": 61,
+        "mean": 61
+      },
+      "hits": 2,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.01135999999998603,
+            0.011274000000012165,
+            0.012011999999995169
+          ],
+          "medianMs": 0.01135999999998603,
+          "batch": 50
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            0.2647999999999229,
+            0.26337499999999636,
+            0.26294999999981883
+          ],
+          "medianMs": 0.26337499999999636,
+          "batch": 4
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            0.4048666666664455,
+            0.375733333333604,
+            0.39429999999993015
+          ],
+          "medianMs": 0.39429999999993015,
+          "batch": 3
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.045076470588302234,
+            0.04317647058825755,
+            0.04307647058832278
+          ],
+          "medianMs": 0.04317647058825755,
+          "batch": 17
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.04933059631332309,
+        "bm4DNAHMbs": 0.011461128571814218,
+        "KMPSearch": 0.26276383013733234,
+        "AhoCorasickSearch": 0.3832628800111402
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1
+    },
+    {
+      "id": "V083",
+      "seed": 3226599506,
+      "alphabet": "Text",
+      "n": 88883,
+      "m": 8,
+      "k": 7,
+      "shape": {
+        "n": 88883,
+        "sigma": 56,
+        "k": 7,
+        "min": 8,
+        "max": 8,
+        "mean": 8
+      },
+      "hits": 4,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            1.7220000000015716,
+            1.7197000000014668,
+            1.754399999999805
+          ],
+          "medianMs": 1.7220000000015716,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.6365000000005239,
+            1.6270000000004075,
+            1.6947000000000116
+          ],
+          "medianMs": 1.6365000000005239,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            1.2301000000006752,
+            1.148799999999028,
+            1.126800000000003
+          ],
+          "medianMs": 1.148799999999028,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.38326666666641057,
+            0.4230333333331752,
+            0.38146666666640766
+          ],
+          "medianMs": 0.38326666666641057,
+          "batch": 3
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 1.1041540465494863,
+        "bm4DNAHMbs": 0.46185827051586675,
+        "KMPSearch": 2.3391681240988875,
+        "AhoCorasickSearch": 1.421756075866838
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V084",
+      "seed": 3226665043,
+      "alphabet": "Binary",
+      "n": 69860,
+      "m": 22,
+      "k": 19,
+      "shape": {
+        "n": 69860,
+        "sigma": 2,
+        "k": 19,
+        "min": 22,
+        "max": 22,
+        "mean": 22
+      },
+      "hits": 10,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.668600000000879,
+            4.380100000000311,
+            1.713900000000649
+          ],
+          "medianMs": 1.713900000000649,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            12.273199999999633,
+            12.10950000000048,
+            11.883700000000317
+          ],
+          "medianMs": 12.10950000000048,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            5.027599999999438,
+            4.913000000000466,
+            4.858799999999974
+          ],
+          "medianMs": 4.913000000000466,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            14.289099999999962,
+            14.065199999999095,
+            14.617100000001301
+          ],
+          "medianMs": 14.289099999999962,
+          "batch": 1
+        }
+      },
+      "winner": "AhoCorasickSearch",
+      "selected": "AhoCorasickSearch",
+      "estimates": {
+        "bm4DNADS": 9.421906155064697,
+        "bm4DNAHMbs": 1.7117944504871079,
+        "KMPSearch": 5.002370988416479,
+        "AhoCorasickSearch": 1.1634611804938506
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V085",
+      "seed": 3226730580,
+      "alphabet": "DNA",
+      "n": 296100,
+      "m": 33,
+      "k": 3,
+      "shape": {
+        "n": 296100,
+        "sigma": 4,
+        "k": 3,
+        "min": 33,
+        "max": 33,
+        "mean": 33
+      },
+      "hits": 2,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            3.487299999998868,
+            3.283900000000358,
+            3.6058999999986554
+          ],
+          "medianMs": 3.487299999998868,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.3559666666666696,
+            0.35633333333377476,
+            0.35470000000047247
+          ],
+          "medianMs": 0.3559666666666696,
+          "batch": 3
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            7.33350000000064,
+            7.024499999999534,
+            7.195100000000821
+          ],
+          "medianMs": 7.195100000000821,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            6.0666999999994005,
+            5.726399999999558,
+            5.671199999998862
+          ],
+          "medianMs": 5.726399999999558,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 3.152484488651114,
+        "bm4DNAHMbs": 0.28612592456419933,
+        "KMPSearch": 3.340446170787773,
+        "AhoCorasickSearch": 4.725593248140335
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V086",
+      "seed": 3226796117,
+      "alphabet": "Protein",
+      "n": 873184,
+      "m": 62,
+      "k": 7,
+      "shape": {
+        "n": 873184,
+        "sigma": 20,
+        "k": 7,
+        "min": 62,
+        "max": 62,
+        "mean": 62
+      },
+      "hits": 4,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.46925000000010186,
+            0.4823999999998705,
+            0.4647500000000946
+          ],
+          "medianMs": 0.46925000000010186,
+          "batch": 2
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            23.381499999999505,
+            24.407599999998638,
+            23.441999999999098
+          ],
+          "medianMs": 23.441999999999098,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            17.42239999999947,
+            17.357199999998556,
+            17.91820000000007
+          ],
+          "medianMs": 17.42239999999947,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            5.022999999999229,
+            5.023699999999735,
+            5.100900000001275
+          ],
+          "medianMs": 5.023699999999735,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 4.34013625767037,
+        "bm4DNAHMbs": 0.5197168851591107,
+        "KMPSearch": 22.975224255230966,
+        "AhoCorasickSearch": 13.953006793264553
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1
+    },
+    {
+      "id": "V087",
+      "seed": 3226861654,
+      "alphabet": "Text",
+      "n": 923788,
+      "m": 5,
+      "k": 24,
+      "shape": {
+        "n": 923788,
+        "sigma": 56,
+        "k": 24,
+        "min": 5,
+        "max": 5,
+        "mean": 5
+      },
+      "hits": 12,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            63.39149999999972,
+            63.65259999999944,
+            65.49129999999968
+          ],
+          "medianMs": 63.65259999999944,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            21.518600000001243,
+            20.50379999999859,
+            20.60529999999926
+          ],
+          "medianMs": 20.60529999999926,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            45.82409999999982,
+            45.46470000000045,
+            45.514100000000326
+          ],
+          "medianMs": 45.514100000000326,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            24.42609999999877,
+            24.204999999999927,
+            25.049800000000687
+          ],
+          "medianMs": 24.42609999999877,
+          "batch": 1
+        }
+      },
+      "winner": "AhoCorasickSearch",
+      "selected": "AhoCorasickSearch",
+      "estimates": {
+        "bm4DNADS": 62.93483022667132,
+        "bm4DNAHMbs": 28.051159804285994,
+        "KMPSearch": 83.27852675568137,
+        "AhoCorasickSearch": 14.719921664142646
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V088",
+      "seed": 3226927191,
+      "alphabet": "Binary",
+      "n": 625219,
+      "m": 25,
+      "k": 3,
+      "shape": {
+        "n": 625219,
+        "sigma": 2,
+        "k": 3,
+        "min": 25,
+        "max": 25,
+        "mean": 25
+      },
+      "hits": 2,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            11.860000000000582,
+            12.238400000000183,
+            12.07510000000002
+          ],
+          "medianMs": 12.07510000000002,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            17.36779999999999,
+            17.77180000000044,
+            17.870100000000093
+          ],
+          "medianMs": 17.77180000000044,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            5.690699999999197,
+            6.285099999999147,
+            5.93369999999959
+          ],
+          "medianMs": 5.93369999999959,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            19.924600000000282,
+            19.867200000000594,
+            20.086199999999735
+          ],
+          "medianMs": 19.924600000000282,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 13.310994783037302,
+        "bm4DNAHMbs": 2.3749890844395245,
+        "KMPSearch": 7.047976819417636,
+        "AhoCorasickSearch": 9.961667089683441
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V089",
+      "seed": 3226992728,
+      "alphabet": "DNA",
+      "n": 88134,
+      "m": 89,
+      "k": 7,
+      "shape": {
+        "n": 88134,
+        "sigma": 4,
+        "k": 7,
+        "min": 89,
+        "max": 89,
+        "mean": 89
+      },
+      "hits": 4,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            3.219200000001365,
+            3.1934999999994034,
+            3.1759000000001834
+          ],
+          "medianMs": 3.1934999999994034,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.23835000000008222,
+            0.235700000000179,
+            0.2466500000000451
+          ],
+          "medianMs": 0.23835000000008222,
+          "batch": 4
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            4.928199999998469,
+            4.923799999998664,
+            4.945899999998801
+          ],
+          "medianMs": 4.928199999998469,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            2.2214999999996508,
+            2.09190000000126,
+            2.1288000000004104
+          ],
+          "medianMs": 2.1288000000004104,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 2.192727067273355,
+        "bm4DNAHMbs": 0.20856606155395127,
+        "KMPSearch": 2.3423970703862356,
+        "AhoCorasickSearch": 1.4795641093645133
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1
+    },
+    {
+      "id": "V090",
+      "seed": 3227058265,
+      "alphabet": "Protein",
+      "n": 41963,
+      "m": 13,
+      "k": 13,
+      "shape": {
+        "n": 41963,
+        "sigma": 20,
+        "k": 13,
+        "min": 13,
+        "max": 13,
+        "mean": 13
+      },
+      "hits": 7,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.22798000000002502,
+            0.2261800000000221,
+            0.2183600000000297
+          ],
+          "medianMs": 0.2261800000000221,
+          "batch": 5
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            2.100300000000061,
+            2.0173999999988155,
+            2.0204999999987194
+          ],
+          "medianMs": 2.0204999999987194,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            0.9422000000004118,
+            0.9465500000005704,
+            0.9461499999997613
+          ],
+          "medianMs": 0.9461499999997613,
+          "batch": 2
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.8728000000000975,
+            0.8684999999995853,
+            0.8787999999995009
+          ],
+          "medianMs": 0.8728000000000975,
+          "batch": 2
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.5965782533280789,
+        "bm4DNAHMbs": 0.2534643027416563,
+        "KMPSearch": 2.0557947328278843,
+        "AhoCorasickSearch": 0.6887649321956392
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V091",
+      "seed": 3227123802,
+      "alphabet": "Text",
+      "n": 33182,
+      "m": 27,
+      "k": 3,
+      "shape": {
+        "n": 33182,
+        "sigma": 56,
+        "k": 3,
+        "min": 27,
+        "max": 27,
+        "mean": 27
+      },
+      "hits": 2,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            0.3470750000001317,
+            0.3504499999999098,
+            0.3231500000001688
+          ],
+          "medianMs": 0.3470750000001317,
+          "batch": 4
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            0.4612333333334391,
+            0.4967333333333954,
+            0.5354333333331548
+          ],
+          "medianMs": 0.4967333333333954,
+          "batch": 3
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.04382727272720579,
+            0.05337272727278601,
+            0.04530909090912742
+          ],
+          "medianMs": 0.04530909090912742,
+          "batch": 11
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.029199999999977518,
+            0.034534482758631226,
+            0.024296551724170248
+          ],
+          "medianMs": 0.029199999999977518,
+          "batch": 29
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.0528069082927379,
+        "bm4DNAHMbs": 0.024902098311539986,
+        "KMPSearch": 0.37716807733066565,
+        "AhoCorasickSearch": 0.5381636346360955
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V092",
+      "seed": 3227189339,
+      "alphabet": "Binary",
+      "n": 43402,
+      "m": 49,
+      "k": 10,
+      "shape": {
+        "n": 43402,
+        "sigma": 2,
+        "k": 10,
+        "min": 49,
+        "max": 49,
+        "mean": 49
+      },
+      "hits": 5,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            0.8498499999996056,
+            0.8176499999999578,
+            0.8189499999998588
+          ],
+          "medianMs": 0.8189499999998588,
+          "batch": 2
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            3.799800000000687,
+            3.815200000000914,
+            3.8227999999999156
+          ],
+          "medianMs": 3.815200000000914,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            1.533499999999549,
+            1.5094000000008236,
+            1.4226999999991676
+          ],
+          "medianMs": 1.5094000000008236,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            4.787000000000262,
+            4.829999999999927,
+            4.6745000000009895
+          ],
+          "medianMs": 4.787000000000262,
+          "batch": 1
+        }
+      },
+      "winner": "AhoCorasickSearch",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 3.0829098308372767,
+        "bm4DNAHMbs": 0.5671866216488693,
+        "KMPSearch": 1.6499826193471925,
+        "AhoCorasickSearch": 0.751148673117954
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1.84309176384527
+    },
+    {
+      "id": "V093",
+      "seed": 3227254876,
+      "alphabet": "DNA",
+      "n": 191241,
+      "m": 78,
+      "k": 26,
+      "shape": {
+        "n": 191241,
+        "sigma": 4,
+        "k": 26,
+        "min": 78,
+        "max": 78,
+        "mean": 78
+      },
+      "hits": 13,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            24.831199999998717,
+            25.613799999999173,
+            25.106799999999566
+          ],
+          "medianMs": 25.106799999999566,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            1.9972000000016124,
+            2.196399999998903,
+            2.0971000000008644
+          ],
+          "medianMs": 2.0971000000008644,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            38.89710000000014,
+            38.85939999999937,
+            37.9471999999987
+          ],
+          "medianMs": 38.85939999999937,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            5.542099999998754,
+            5.231399999998757,
+            5.393200000000434
+          ],
+          "medianMs": 5.393200000000434,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 17.654773152617995,
+        "bm4DNAHMbs": 1.6208017693517254,
+        "KMPSearch": 18.757754678939026,
+        "AhoCorasickSearch": 3.2936454198191356
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1
+    },
+    {
+      "id": "V094",
+      "seed": 3227320413,
+      "alphabet": "Protein",
+      "n": 953250,
+      "m": 14,
+      "k": 2,
+      "shape": {
+        "n": 953250,
+        "sigma": 20,
+        "k": 2,
+        "min": 14,
+        "max": 14,
+        "mean": 14
+      },
+      "hits": 1,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.6993000000002212,
+            0.7463999999999942,
+            0.7083499999998821
+          ],
+          "medianMs": 0.7083499999998821,
+          "batch": 2
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            7.131299999999101,
+            7.1983000000000175,
+            7.109300000000076
+          ],
+          "medianMs": 7.131299999999101,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            9.435200000001714,
+            9.327700000001641,
+            9.511199999999008
+          ],
+          "medianMs": 9.435200000001714,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            3.005200000001423,
+            3.106900000000678,
+            2.9694999999992433
+          ],
+          "medianMs": 3.005200000001423,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 1.932941000408668,
+        "bm4DNAHMbs": 0.7447061532299226,
+        "KMPSearch": 7.161922726003245,
+        "AhoCorasickSearch": 15.177593197493952
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V095",
+      "seed": 3227385950,
+      "alphabet": "Text",
+      "n": 409156,
+      "m": 25,
+      "k": 8,
+      "shape": {
+        "n": 409156,
+        "sigma": 56,
+        "k": 8,
+        "min": 25,
+        "max": 25,
+        "mean": 25
+      },
+      "hits": 4,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            10.876599999999598,
+            10.325399999999718,
+            10.295599999999467
+          ],
+          "medianMs": 10.325399999999718,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            6.9200999999993655,
+            6.684900000000198,
+            6.535200000000259
+          ],
+          "medianMs": 6.684900000000198,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            2.466200000000754,
+            2.4111999999986438,
+            2.3637000000016997
+          ],
+          "medianMs": 2.4111999999986438,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.6017000000001644,
+            0.6153500000000349,
+            0.6308499999995547
+          ],
+          "medianMs": 0.6153500000000349,
+          "batch": 2
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 1.859464481335632,
+        "bm4DNAHMbs": 0.7039476300699752,
+        "KMPSearch": 12.302364865746181,
+        "AhoCorasickSearch": 6.537677351869626
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V096",
+      "seed": 3227451487,
+      "alphabet": "Binary",
+      "n": 983623,
+      "m": 41,
+      "k": 15,
+      "shape": {
+        "n": 983623,
+        "sigma": 2,
+        "k": 15,
+        "min": 41,
+        "max": 41,
+        "mean": 41
+      },
+      "hits": 8,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            18.909100000000763,
+            19.758700000000317,
+            19.041300000000774
+          ],
+          "medianMs": 19.041300000000774,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            140.46090000000004,
+            134.84709999999905,
+            136.80509999999958
+          ],
+          "medianMs": 136.80509999999958,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            47.78369999999995,
+            46.554700000000594,
+            47.1869999999999
+          ],
+          "medianMs": 47.1869999999999,
+          "batch": 1
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            153.70190000000002,
+            155.23279999999977,
+            156.7492999999995
+          ],
+          "medianMs": 155.23279999999977,
+          "batch": 1
+        }
+      },
+      "winner": "AhoCorasickSearch",
+      "selected": "AhoCorasickSearch",
+      "estimates": {
+        "bm4DNADS": 104.70746358916927,
+        "bm4DNAHMbs": 18.666734570103923,
+        "KMPSearch": 55.442002284511126,
+        "AhoCorasickSearch": 15.733271192789948
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V097",
+      "seed": 3227517024,
+      "alphabet": "DNA",
+      "n": 17857,
+      "m": 10,
+      "k": 3,
+      "shape": {
+        "n": 17857,
+        "sigma": 4,
+        "k": 3,
+        "min": 10,
+        "max": 10,
+        "mean": 10
+      },
+      "hits": 2,
+      "timings": {
+        "bm4DNADS": {
+          "samplesMs": [
+            0.2787249999996675,
+            0.2721750000000611,
+            0.2726999999999862
+          ],
+          "medianMs": 0.2726999999999862,
+          "batch": 4
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.04433157894738159,
+            0.0685105263158843,
+            0.048831578947341005
+          ],
+          "medianMs": 0.048831578947341005,
+          "batch": 19
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            0.37086666666679474,
+            0.3716333333334963,
+            0.3701333333331907
+          ],
+          "medianMs": 0.37086666666679474,
+          "batch": 3
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            0.4928999999998875,
+            0.406099999999545,
+            0.4444999999996071
+          ],
+          "medianMs": 0.4444999999996071,
+          "batch": 3
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.1902600442526943,
+        "bm4DNAHMbs": 0.035543087400290316,
+        "KMPSearch": 0.20242480654145767,
+        "AhoCorasickSearch": 0.2879431129616318
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V098",
+      "seed": 3227582561,
+      "alphabet": "Protein",
+      "n": 76229,
+      "m": 28,
+      "k": 11,
+      "shape": {
+        "n": 76229,
+        "sigma": 20,
+        "k": 11,
+        "min": 28,
+        "max": 28,
+        "mean": 28
+      },
+      "hits": 6,
+      "timings": {
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.18909999999990154,
+            0.19929999999991801,
+            0.15350000000004607
+          ],
+          "medianMs": 0.18909999999990154,
+          "batch": 6
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            3.2001000000000204,
+            3.1674000000002707,
+            3.119199999999182
+          ],
+          "medianMs": 3.1674000000002707,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.6855999999988853,
+            1.668099999998958,
+            1.7379999999993743
+          ],
+          "medianMs": 1.6855999999988853,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            0.9753000000000611,
+            1.0805999999993219,
+            0.9320999999999913
+          ],
+          "medianMs": 0.9753000000000611,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.5968745395075741,
+        "bm4DNAHMbs": 0.1773183592830688,
+        "KMPSearch": 3.1619183925499708,
+        "AhoCorasickSearch": 1.2513170015550967
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V099",
+      "seed": 3227648098,
+      "alphabet": "Text",
+      "n": 83777,
+      "m": 33,
+      "k": 24,
+      "shape": {
+        "n": 83777,
+        "sigma": 56,
+        "k": 24,
+        "min": 33,
+        "max": 33,
+        "mean": 33
+      },
+      "hits": 12,
+      "timings": {
+        "KMPSearch": {
+          "samplesMs": [
+            6.761499999998705,
+            6.8144999999985885,
+            6.8179999999993015
+          ],
+          "medianMs": 6.8144999999985885,
+          "batch": 1
+        },
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            2.2181000000000495,
+            1.9904000000005908,
+            2.2010000000009313
+          ],
+          "medianMs": 2.2010000000009313,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            1.314699999998993,
+            1.2973999999994703,
+            1.2866000000012718
+          ],
+          "medianMs": 1.2973999999994703,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.399199999999837,
+            0.31999999999970896,
+            0.30569999999988795
+          ],
+          "medianMs": 0.31999999999970896,
+          "batch": 4
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 0.8694426558097789,
+        "bm4DNAHMbs": 0.36219474183327227,
+        "KMPSearch": 7.583986875712835,
+        "AhoCorasickSearch": 1.4309919169724712
+      },
+      "allmer": "bm4DNADS",
+      "slowdown": 1
+    },
+    {
+      "id": "V100",
+      "seed": 3227713635,
+      "alphabet": "Binary",
+      "n": 57267,
+      "m": 92,
+      "k": 3,
+      "shape": {
+        "n": 57267,
+        "sigma": 2,
+        "k": 3,
+        "min": 92,
+        "max": 92,
+        "mean": 92
+      },
+      "hits": 2,
+      "timings": {
+        "AhoCorasickSearch": {
+          "samplesMs": [
+            1.290500000000975,
+            1.1111000000000786,
+            1.0684999999994034
+          ],
+          "medianMs": 1.1111000000000786,
+          "batch": 1
+        },
+        "bm4DNADS": {
+          "samplesMs": [
+            1.596400000000358,
+            1.747800000001007,
+            1.569499999999607
+          ],
+          "medianMs": 1.596400000000358,
+          "batch": 1
+        },
+        "bm4DNAHMbs": {
+          "samplesMs": [
+            0.6613999999999578,
+            0.6746999999995751,
+            0.6707999999998719
+          ],
+          "medianMs": 0.6707999999998719,
+          "batch": 2
+        },
+        "KMPSearch": {
+          "samplesMs": [
+            1.878500000002532,
+            1.8008999999983644,
+            1.8205000000016298
+          ],
+          "medianMs": 1.8205000000016298,
+          "batch": 1
+        }
+      },
+      "winner": "bm4DNAHMbs",
+      "selected": "bm4DNAHMbs",
+      "estimates": {
+        "bm4DNADS": 1.2208137749354604,
+        "bm4DNAHMbs": 0.22292861918235196,
+        "KMPSearch": 0.6564400645715633,
+        "AhoCorasickSearch": 0.9455381678124323
+      },
+      "allmer": "bm4DNAHMbs",
+      "slowdown": 1
+    }
+  ]
+}

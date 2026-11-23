@@ -1,0 +1,11 @@
+.sites/
+.codex-preview/
+node_modules/
+dist/
+*.log
+.openai/
+.env
+.env.*
+coverage/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,4 @@
+* text=auto eol=lf
+*.pdf binary
+# Preserve the published fixture byte hashes in Windows checkouts.
+tests/data/*.fasta text eol=lf
